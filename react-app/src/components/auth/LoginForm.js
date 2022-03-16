@@ -30,7 +30,22 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  const handleClick = async (e) => {
+    e.preventDefault()
+    const demo = {
+      email: "demo@aa.io",
+      password: "password",
+    }
+    const data = await dispatch(login(demo.email, demo.password));
+    if (data) {
+      setErrors(data);
+    }
+
+  }
+
   return (
+    <div className='login-form-container'>
+      <h1>Log in to Brew</h1>
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
@@ -57,8 +72,10 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button className='login-form-submit' type='button' onClick={handleClick}>Demo</button>
       </div>
     </form>
+    </div>
   );
 };
 
