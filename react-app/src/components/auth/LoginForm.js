@@ -55,11 +55,10 @@ const LoginForm = () => {
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className='error-div' key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
         <input
           name='email'
           type='text'
@@ -69,7 +68,6 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'
@@ -77,11 +75,15 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
-        <button className='login-form-submit' type='button' onClick={handleClick}>Demo</button>
       </div>
+        <div>
+        <button className='login-form-button' type='submit'>Login</button>
+        </div>
+        <div>
+        <button className='login-form-button' type='button' onClick={handleClick}>Demo</button>
+        </div>
     </form>
-    <div className='login-redirect-container'>
+        <div className='login-redirect-container'>
           <p>Don't have an account?</p>
           <NavLink className='switchFormButton' to="/sign-up" >Sign Up </NavLink>
         </div>

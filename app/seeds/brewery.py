@@ -7,9 +7,9 @@ def seed_breweries():
     brewery1 = Brewery(
         name='The Beer Den Cavern', address='2815 Woodruff Rd', city='Simpsonville', state='SC', zip_code='29681', phone='(864)555-6842', email='beerden@aa.io', host_id=2)
     brewery2 = Brewery(
-        name='The Beer Den Cavern', address='311 E Washington St', city='Greenville', state='SC', zip_code='29601', phone='(864)555-4809', email='fireforge@aa.io', host_id=2)
+        name='Fire Forge Brewery', address='311 E Washington St', city='Greenville', state='SC', zip_code='29601', phone='(864)555-4809', email='fireforge@aa.io', host_id=2)
     brewery3 = Brewery(
-        name='The Beer Den Cavern', address='6 Whitlee Ct', city='Greenville', state='SC', zip_code='29607', phone='(864)555-0104', email='brewery85@aa.io', host_id=3)
+        name='Brewery 85', address='6 Whitlee Ct', city='Greenville', state='SC', zip_code='29607', phone='(864)555-0104', email='brewery85@aa.io', host_id=3)
 
     db.session.add(brewery1)
     db.session.add(brewery2)

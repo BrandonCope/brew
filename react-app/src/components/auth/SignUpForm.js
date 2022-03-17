@@ -95,7 +95,7 @@ const SignUpForm = () => {
     <form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className='error-div' key={ind}>{error}</div>
         ))}
       </div>
       <div>

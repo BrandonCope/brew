@@ -1,7 +1,7 @@
 .signup-form-container {
     /* border: solid; */
-    width: 300px;
-    height: 400px;
+    /* width: 300px; */
+    /* height: 400px; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -9,19 +9,90 @@
     margin: auto;
 }
 
+.app-title {
+    color: #c41200;
+}
+
+.signup-form-container > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 400px;
+    width: 500px;
+}
+
+.signup-form-container > form > input {
+    width: 400px;
+}
+
+.signup-form-container > form > button {
+    background-color: #c41200;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.login-redirect-container {
+    display: flex;
+    /* flex-direction: column; */
+
+}
+
+.switchFormButton {
+    text-decoration: none;
+    color: #c41200;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
 .login-form-container {
     /* border: solid; */
     width: 300px;
-    height: 250px;
+    /* height: 250px; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     margin: auto;
+}
+
+.login-form-container > h1 {
+    color: #c41200;
+}
+
+.login-form-container > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 200px;
+    width: 500px;
+    padding-bottom: 3px;
+}
+
+.login-form-container > form > div {
+    padding: 5px;
+}
+
+.login-form-button {
+    background-color: #c41200;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 200px;
 }
 
 .logo-home-container {
     background-color: #c41200;
     display: flex;
     justify-content: center;
+}
+
+.error-div {
+    color: red;
 }
