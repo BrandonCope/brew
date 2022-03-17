@@ -71,10 +71,10 @@ const BreweryHostForm = () => {
             if (data.errors) {
                 setErrors(data.errors);
             } else {
-                reset()
             }
         } else {
-            history.push(`/profiles/${user?.id}`)
+            history.push(`/`)
+            reset()
         }
 
 

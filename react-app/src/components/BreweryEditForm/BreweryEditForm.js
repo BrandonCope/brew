@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import { createBrewery, editBrewery } from '../../store/brews';
-// import './BreweryHost.css'
+import { editBrewery } from '../../store/brews';
+import { useEditModal } from '.';
+import './BrewEditForm.css'
 
 const BreweryEditForm = ({brew}) => {
     const [errors, setErrors] = useState([]);
@@ -13,7 +14,10 @@ const BreweryEditForm = ({brew}) => {
     const [zip_code, setZipCode] = useState(`${brew.zip_code}`);
     const [phone, setPhone] = useState(`${brew.phone}`);
     const [email, setEmail] = useState(`${brew.email}`);
+    const {setShowModal} = useEditModal();
     const user = useSelector(state => state.session.user);
+    const id = user?.id
+    const brewId = brew?.id
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -44,7 +48,6 @@ const BreweryEditForm = ({brew}) => {
     }, [name, email, address, city, state, zip_code, phone])
 
 
-
     const handleSubmit = async e => {
         e.preventDefault();
         if (user) {
@@ -58,12 +61,12 @@ const BreweryEditForm = ({brew}) => {
                 phone,
                 email,
             }
-            const data = await dispatch(editBrewery(buildBrewery))
+            const data = await dispatch(editBrewery(buildBrewery, brewId))
+            setShowModal(false)
             if (data.errors) {
                 setErrors(data.errors);
-            } 
+            }
         } else {
-            history.push(`/profiles/${user?.id}`)
         }
 
 
@@ -96,8 +99,8 @@ const BreweryEditForm = ({brew}) => {
 
 
     return (
-        <div className="host-form-body-div">
-      <h1 className="app-title">Host a Brewery</h1>
+        <div className="brew-edit-form-body-div">
+      <h1 className="app-title">Edit Your Details</h1>
     <form onSubmit={handleSubmit}>
       <div>
         {errors.map((error, ind) => (

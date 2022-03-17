@@ -4,11 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Navigation/NavBar';
-// import ProtectedRoute from './components/auth/ProtectedRoute';
-// import UsersList from './components/UsersList';
-// import User from './components/User';
 import { authenticate } from './store/session';
-// import { getUsers } from './store/users.js';
 import { getBrews } from './store/brews.js';
 import { getImages } from './store/images.js'
 import { getReviews } from './store/reviews.js'
@@ -17,6 +13,7 @@ import ProfilePage from './components/Profile';
 import PageNotFound from './components/NotFound';
 import BreweryPage from './components/BreweryPage';
 import BreweryHostForm from './components/BreweryHostForm';
+import ReviewForm from './components/ReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

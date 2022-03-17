@@ -1,29 +1,37 @@
 import React from "react"
-import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useHistory, useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 import './BreweryPage.css'
 import BreweryEditForm from "../BreweryEditForm"
 import BreweryEditFormModal from "../BreweryEditForm"
+import { deleteBrewery } from "../../store/brews"
+import ReviewFormModal from "../ReviewForm"
 
 const BreweryPage = () => {
     const {id} = useParams()
+    const dispatch = useDispatch()
+    const history = useHistory()
     const user = useSelector((state) => state.session.user)
     const brews = useSelector((state) => state.breweries)
     const brewArr = Object.values(brews)
     const filterBrewArr = brewArr.filter((brew) => brew?.id === +id)
     const images = useSelector((state) => state.images)
     const imageArr = Object.values(images)
-    const filterImageArr = imageArr.filter((image => image?.brewery_id === +id ))
-    console.log(filterBrewArr)
+    const filterImageArr = imageArr.filter((image => image?.brewery_id === +id))
+    const reviews = useSelector((state) => state.reviews)
+    const reviewArr = Object.values(reviews)
+    const filterReviewArr = reviewArr.filter((review) => review?.brewery_id === +id)
+    console.log(filterReviewArr)
+
 
 
     return (
         <div className="brewery-page-div">
            {filterBrewArr?.map((brew) => (
-               <div>
+               <div key={brew.id}>
                    <div id="carousel">
                    {filterImageArr.map((image) => (
-                           <div className="slide">
+                           <div key={image.id} className="slide">
                            <img className="carousel-images" alt='beer and barstools' src={image?.url} />
                            </div>
                    ))}
@@ -32,12 +40,24 @@ const BreweryPage = () => {
                         <h2>{brew.name}</h2>
                         {brew?.host_id === user?.id ? <div>
                             <BreweryEditFormModal brew={brew} />
-                            <button>Delete</button>
-                        </div> : <></>}
+                            <button onClick={(e) => {
+                                dispatch(deleteBrewery(brew.id))
+                                history.push(`/profiles/${user?.id}`)
+                                }}>Delete</button>
+                        </div> : <><ReviewFormModal brew={brew} /></>}
                     </div>
                    <div className="brewery-detail-body-container">
                    <div>
-                        <h3>Leave a Review</h3>
+                        <h3>Recommended Reviews</h3>
+                        <div>
+                            {filterReviewArr.map((review) => (
+                                <div>
+                                    <h3>{review.first_name} {review.last_name.slice(0,1)}.</h3>
+                                    <p>{review.rating}</p>
+                                    <p>{review.content}</p>
+                                </div>
+                            ))}
+                        </div>
                    </div>
                    <div className="contact-info-div">
                        <div>
