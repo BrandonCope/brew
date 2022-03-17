@@ -15,6 +15,7 @@ import { getReviews } from './store/reviews.js'
 import HomePage from './components/HomePage';
 import ProfilePage from './components/Profile';
 import PageNotFound from './components/NotFound';
+import BreweryPage from './components/BreweryPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,12 +53,14 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/brews/:id'>
+          <BreweryPage />
+        </Route>
         <Route path='/profiles/:id' >
           <h1>Hello Profiles Page</h1>
           <ProfilePage />
         </Route>
         <Route path='/' exact={true} >
-          <h1>Hello Home Page</h1>
           <HomePage />
         </Route>
         <Route>
