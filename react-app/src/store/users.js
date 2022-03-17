@@ -1,10 +1,6 @@
 const LOADUSERS = 'user/LOADUSERS';
 
-const loadUsers = (users) => ({
-    type: LOADUSERS,
-    users
-
-})
+const loadUsers = (users) => ({type: LOADUSERS, users})
 
 export const getUsers = () => async dispatch => {
     const response = await fetch('/api/users/');
@@ -13,17 +9,15 @@ export const getUsers = () => async dispatch => {
         dispatch(loadUsers(users));
         return users
     }
-    return response
 }
 
 const usersReducer = (state = {},action) => {
     let newState;
     switch(action.type){
-        case LOADUSERS:{
+        case LOADUSERS:
             newState = {...state};
             action.users.forEach(user => newState[user.id] = user);
             return newState
-        }
         default:
             return state
     }

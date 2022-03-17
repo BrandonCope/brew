@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, Redirect, useHistory, useLocation} from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './auth.css'
 
@@ -14,8 +14,8 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  // const location = useLocation();
-  // const history = useHistory();
+  const location = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
     let errors = []
@@ -76,10 +76,22 @@ const SignUpForm = () => {
     return <Redirect to='/' />;
   }
 
+  const switchForm = () => {
+    if (location.pathname !== "/") {
+      history.push('/');
+    }
+  }
+
 
   return (
+    <>
+    <div className='logo-home-container'>
+      <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
+            <h2>Brew</h2>
+          </NavLink>
+    </div>
     <div className='signup-form-container'>
-      <h1 className="app-title">Sign up to Brew</h1>
+      <h1 className="app-title">Sign up for Brew</h1>
     <form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
@@ -87,8 +99,8 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-        <label>User Name</label>
         <input
+          placeholder='User Name'
           type='text'
           name='username'
           onChange={updateUsername}
@@ -96,8 +108,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+
         <input
+        placeholder='Email'
           type='text'
           name='email'
           onChange={updateEmail}
@@ -105,8 +118,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>First Name</label>
+
         <input
+        placeholder='First Name'
           type='text'
           name='first_name'
           onChange={updateFirstName}
@@ -114,8 +128,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Last Name</label>
+
         <input
+        placeholder='Last Name'
           type='text'
           name='last_name'
           onChange={updateLastName}
@@ -123,8 +138,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+
         <input
+          placeholder='Password'
           type='password'
           name='password'
           onChange={updatePassword}
@@ -132,8 +148,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+
         <input
+          placeholder='Confirm Password'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
@@ -142,7 +159,12 @@ const SignUpForm = () => {
       </div>
       <button type='submit'>Sign Up</button>
     </form>
+        <div className='login-redirect-container'>
+          <p>Have an account?</p>
+          <NavLink className='switchFormButton' to="/login" >Login </NavLink>
+        </div>
    </div>
+    </>
   );
 };
 

@@ -6,14 +6,14 @@ from app.forms import ImageForm
 
 image_routes = Blueprint('image', __name__)
 
-@image_routes.route('')
+@image_routes.route('/')
 def get_images():
     images = Image.query.all()
     return jsonify(
         [image.to_dict() for image in images]
     )
 
-@image_routes.route('', methods=['POST'])
+@image_routes.route('/', methods=['POST'])
 @login_required
 def post_images():
     form = ImageForm()

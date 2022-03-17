@@ -19,3 +19,9 @@
     align-items: center;
     margin: auto;
 }
+
+.logo-home-container {
+    background-color: #c41200;
+    display: flex;
+    justify-content: center;
+}

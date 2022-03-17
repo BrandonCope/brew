@@ -1,25 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Route, Switch, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Navigation/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+// import ProtectedRoute from './components/auth/ProtectedRoute';
+// import UsersList from './components/UsersList';
+// import User from './components/User';
 import { authenticate } from './store/session';
-import { getUsers } from './store/users';
-import { getBreweries } from './store/breweries';
+// import { getUsers } from './store/users.js';
+import { getBrews } from './store/brews.js';
+import { getImages } from './store/images.js'
+import { getReviews } from './store/reviews.js'
+import HomePage from './components/HomePage';
+import ProfilePage from './components/Profile';
+import PageNotFound from './components/NotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [loginForm, setLoginForm] = useState(true)
+  const [notLandingPage, setNotLandingPage] = useState(true)
   const dispatch = useDispatch();
+  const location = useLocation();
+  const user = useSelector(state => state.session.user)
+
+  useEffect(() => {
+    if (!user && (location.pathname === "/login" || location.pathname === "/sign-up")) setNotLandingPage(false)
+    else setNotLandingPage(true)
+  }, [user, location])
 
   useEffect(() => {
       dispatch(authenticate());
-      getBreweries()
-      getUsers()
+      dispatch(getBrews())
+      dispatch(getImages())
+      dispatch(getReviews())
+      // dispatch(getUsers())
       setLoaded(true);
   }, [dispatch]);
 
@@ -27,9 +42,9 @@ function App() {
     return null;
   }
 
-  return (
+  return (loaded &&
     <>
-      <NavBar loginForm={loginForm} setLoginForm={setLoginForm} />
+      {notLandingPage && (<NavBar loginForm={loginForm} setLoginForm={setLoginForm} />)}
       <Switch>
         <Route path='/login'>
           <LoginForm />
@@ -39,25 +54,16 @@ function App() {
         </Route>
         <Route path='/profiles/:id' >
           <h1>Hello Profiles Page</h1>
-          {/* <BusinessPage /> */}
+          <ProfilePage />
         </Route>
         <Route path='/' exact={true} >
           <h1>Hello Home Page</h1>
-          {/* <HomePage /> */}
+          <HomePage />
         </Route>
         <Route>
           <h1>Page NOT FOUND</h1>
-          {/* <NotFoundPage /> */}
+          <PageNotFound />
         </Route>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute> */}
-        {/* <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute> */}
       </Switch>
     </>
   );

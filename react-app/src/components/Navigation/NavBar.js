@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
+import './NavBar.css'
 // import LogoutButton from './auth/LogoutButton';
 
 const NavBar = ({ loginForm, setLoginForm }) => {
@@ -33,12 +34,12 @@ const NavBar = ({ loginForm, setLoginForm }) => {
     sessionLinks = (
       <>
        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+          <NavLink className='session-links' to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>
         </li>
         <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
+          <NavLink className='session-links' to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
         </li>
@@ -49,33 +50,18 @@ const NavBar = ({ loginForm, setLoginForm }) => {
 
   }
   return (
-    <nav>
-          <NavLink to='/' activeClassName='active'>
+    <div className='nav-body-div'>
+    <nav className='nav-container'>
+          <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
             <h2>Brew</h2>
           </NavLink>
       <ul>
+        <div className='nav-session-links'>
         {sessionLinks}
-        {/* <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li> */}
-        {/* <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li> */}
-        {/* <li>
-          <ProfileButton user={user} /> */}
-          {/* <LogoutButton /> */}
-        {/* </li> */}
+        </div>
       </ul>
     </nav>
+    </div>
   );
 }
 

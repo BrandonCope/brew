@@ -6,14 +6,14 @@ from app.forms import ReviewForm
 
 review_routes = Blueprint('review', __name__)
 
-@review_routes.route('')
+@review_routes.route('/')
 def get_reviews():
     reviews = Review.query.all()
     return jsonify(
         [review.to_dict() for review in reviews]
     )
 
-@review_routes.route('', methods=['POST'])
+@review_routes.route('/', methods=['POST'])
 @login_required
 def post_reviews():
     form = ReviewForm()

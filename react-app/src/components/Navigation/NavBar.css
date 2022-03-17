@@ -3,7 +3,7 @@
     justify-content: space-around;
     position: fixed;
     top: 0;
-    background-color: white;
+    background-color: #c41200;
     width: 100%;
     align-items: center;
   }
@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: inherit;
+    color: white;
     font-family: "Oleo Script Swash Caps", cursive;
   }
 
@@ -32,6 +32,7 @@
 
   .fa-solid.fa-house {
     font-size: 30px;
+    color: white;
   }
 
   .profileContainer {
@@ -51,6 +52,7 @@
 
   .fa-solid.fa-user {
     font-size: 30px;
+    color: white;
   }
 
   .profile-dropdown {
@@ -88,11 +90,18 @@
   }
 
   .profileLink:hover {
-    background-color: skyblue;
+    background-color: #c41200;
+    color: white;
     border-radius: 3px;
     padding: 5px;
   }
 
   .profileItem {
     padding: 5px;
+  }
+
+
+  .session-links {
+    text-decoration: none;
+    color: white;
   }

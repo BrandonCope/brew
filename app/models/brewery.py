@@ -1,4 +1,3 @@
-from unicodedata import name
 from app.models.db import db
 from sqlalchemy import ForeignKey
 
