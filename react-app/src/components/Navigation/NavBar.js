@@ -3,8 +3,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginForm from '../auth/LoginForm';
-import SignUpForm from '../auth/SignUpForm';
+// import LoginForm from '../auth/LoginForm';
+// import SignUpForm from '../auth/SignUpForm';
 import './NavBar.css'
 // import LogoutButton from './auth/LogoutButton';
 
@@ -16,15 +16,14 @@ const NavBar = ({ loginForm, setLoginForm }) => {
   if (user) {
     sessionLinks = (
       <>
+        <li className='host-form-li'>
+          <NavLink className='host-navlink' to='/brews/new'>Host a Brewery</NavLink>
+        </li>
         <NavLink to="/" >
           <li>
             <button className='home-button'><i className="fa-solid fa-house"></i></button>
           </li>
         </NavLink>
-        <li>
-          <button>Host a brewery</button>
-          {/* <CreateImageModal /> */}
-        </li>
         <li>
           <ProfileButton user={user} />
         </li>

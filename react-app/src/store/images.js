@@ -1,13 +1,13 @@
 const LOAD = '/images/load'
 const ADD = '/images/add'
-const UPDATE = '/images/edit'
+// const UPDATE = '/images/edit'
 const REMOVE = '/images/remove'
 
 export const loadImages = (images) => ({type: LOAD, images});
 
 const addImage = new_image => ({ type: ADD, new_image })
 
-const updateImage = edit_image => ({ type: UPDATE, edit_image })
+// const updateImage = edit_image => ({ type: UPDATE, edit_image })
 
 const removeImage = remove_image => ({ type: REMOVE, remove_image })
 

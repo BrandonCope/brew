@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import './HomePage.css'
@@ -8,14 +8,14 @@ const HomePage = () => {
     const brews = useSelector((state) => state.breweries)
     const brewArr = Object.values(brews)
     const filterBrewArr = brewArr.filter((brew) => brew?.host_id !== +user?.id)
-
+    
     console.log('filterBrewArr', filterBrewArr)
 
 
     return (
         <>
         <div className="home-image-container">
-           <img id="home-image" src="../../../images/Biggest-Craft-Beer-Releases-of-2017_fb.jpg" />
+           <img alt="main page background" id="home-image" src="../../../images/Biggest-Craft-Beer-Releases-of-2017_fb.jpg" />
         </div>
 
         <div className="body-div">
