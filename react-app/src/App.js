@@ -16,6 +16,7 @@ import HomePage from './components/HomePage';
 import ProfilePage from './components/Profile';
 import PageNotFound from './components/NotFound';
 import BreweryPage from './components/BreweryPage';
+import BreweryHostForm from './components/BreweryHostForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,7 +36,6 @@ function App() {
       dispatch(getBrews())
       dispatch(getImages())
       dispatch(getReviews())
-      // dispatch(getUsers())
       setLoaded(true);
   }, [dispatch]);
 
@@ -52,6 +52,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/brews/new'>
+          <BreweryHostForm />
         </Route>
         <Route path='/brews/:id'>
           <BreweryPage />

@@ -105,3 +105,18 @@
     text-decoration: none;
     color: white;
   }
+
+  .host-navlink{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    width: 108px;
+    /* padding: 50px; */
+
+  }
+
+  .host-form-li {
+    display: flex;
+    align-items: center;
+  }
