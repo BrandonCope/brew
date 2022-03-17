@@ -19,7 +19,6 @@ function BreweryEditFormModal({brew}) {
       <button className='editDetailButton' onClick={() => setShowModal(true)}>Edit Details</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-         <p>Hello From Edit Modal</p>
          <BreweryEditForm brew={brew} />
         </Modal>
       )}

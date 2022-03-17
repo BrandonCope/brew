@@ -3,7 +3,7 @@ const ADD = '/breweries/add'
 const UPDATE = '/breweries/edit'
 const REMOVE = '/breweries/remove'
 
-export const loadBreweries = (breweries) => ({type: LOAD, breweries});
+const loadBreweries = (breweries) => ({type: LOAD, breweries});
 
 const addBrewery = new_brewery => ({ type: ADD, new_brewery })
 
@@ -41,8 +41,8 @@ export const createBrewery = (payload) => async dispatch => {
     return response;
 }
 
-export const editBrewery = (payload) => async dispatch => {
-    const response = await fetch(`/api/breweries/${payload.id}`, {
+export const editBrewery = (payload, brewId) => async dispatch => {
+    const response = await fetch(`/api/breweries/${brewId}`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"
