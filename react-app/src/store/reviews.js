@@ -41,8 +41,8 @@ export const createReview = (payload) => async dispatch => {
     return response;
 }
 
-export const editReview = (payload) => async dispatch => {
-    const response = await fetch(`/api/reviews/${payload.id}`, {
+export const editReview = (payload, reviewId) => async dispatch => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"

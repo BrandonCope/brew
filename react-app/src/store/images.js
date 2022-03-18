@@ -3,7 +3,7 @@ const ADD = '/images/add'
 // const UPDATE = '/images/edit'
 const REMOVE = '/images/remove'
 
-export const loadImages = (images) => ({type: LOAD, images});
+const loadImages = (images) => ({type: LOAD, images});
 
 const addImage = new_image => ({ type: ADD, new_image })
 

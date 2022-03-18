@@ -32,3 +32,16 @@ justify-content: space-around;
 .brew-title {
 
 }
+
+input[type="radio"] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+.star-view-div {
+    display: flex;
+}

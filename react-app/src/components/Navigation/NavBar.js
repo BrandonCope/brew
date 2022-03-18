@@ -6,6 +6,7 @@ import ProfileButton from './ProfileButton';
 // import LoginForm from '../auth/LoginForm';
 // import SignUpForm from '../auth/SignUpForm';
 import './NavBar.css'
+import SearchBar from '../SearchBar';
 // import LogoutButton from './auth/LogoutButton';
 
 const NavBar = ({ loginForm, setLoginForm }) => {
@@ -54,6 +55,9 @@ const NavBar = ({ loginForm, setLoginForm }) => {
           <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
             <h2>Brew</h2>
           </NavLink>
+        <div>
+          <SearchBar />
+        </div>
       <ul>
         <div className='nav-session-links'>
         {sessionLinks}

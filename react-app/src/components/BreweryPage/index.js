@@ -1,11 +1,15 @@
 import React from "react"
-import { useHistory, useParams } from "react-router-dom"
+import { NavLink, useHistory, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import './BreweryPage.css'
 import BreweryEditForm from "../BreweryEditForm"
 import BreweryEditFormModal from "../BreweryEditForm"
 import { deleteBrewery } from "../../store/brews"
 import ReviewFormModal from "../ReviewForm"
+import { deleteReview } from "../../store/reviews"
+import ReviewEditFormModal from "../ReviewEditForm"
+import ImageFormModal from "../ImageForm"
+import { FaStar } from 'react-icons/fa'
 
 const BreweryPage = () => {
     const {id} = useParams()
@@ -24,7 +28,6 @@ const BreweryPage = () => {
     console.log(filterReviewArr)
 
 
-
     return (
         <div className="brewery-page-div">
            {filterBrewArr?.map((brew) => (
@@ -37,7 +40,10 @@ const BreweryPage = () => {
                    ))}
                    </div>
                     <div className="brew-title">
+                        <div>
                         <h2>{brew.name}</h2>
+                        </div>
+                        <div>
                         {brew?.host_id === user?.id ? <div>
                             <BreweryEditFormModal brew={brew} />
                             <button onClick={(e) => {
@@ -45,6 +51,11 @@ const BreweryPage = () => {
                                 history.push(`/profiles/${user?.id}`)
                                 }}>Delete</button>
                         </div> : <><ReviewFormModal brew={brew} /></>}
+                        <ImageFormModal brew={brew} />
+                        </div>
+                        <div>
+                            <NavLink to={`/brews/${brew.id}/images`} >See All Photos</NavLink>
+                        </div>
                     </div>
                    <div className="brewery-detail-body-container">
                    <div>
@@ -53,8 +64,28 @@ const BreweryPage = () => {
                             {filterReviewArr.map((review) => (
                                 <div>
                                     <h3>{review.first_name} {review.last_name.slice(0,1)}.</h3>
-                                    <p>{review.rating}</p>
+                                    {review.user_id === user?.id ? <div>
+                                        <ReviewEditFormModal brew={brew} review={review} />
+                                        <button onClick={(e) => {
+                                            dispatch(deleteReview(review.id))
+                                        }}>Delete</button>
+                                    </div> : <></>}
+                            
                                     <p>{review.content}</p>
+                                    <div className="star-view-div">
+                                        {[...Array(5)].map((star, i) => {
+                                            const rateVal = i + 1;
+                                            return (
+                                                <div >
+                                                    <FaStar
+                                                    className="star-view"
+                                                    color={rateVal <= review.rating ? "ffc107" : "e4e5e9"}
+                                                    size={30}
+                                                    />
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
                             ))}
                         </div>

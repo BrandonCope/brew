@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { useReviewModal } from '.'
-import { createReview, editReview } from '../../store/reviews'
+import { useReviewEditModal } from '.'
+import { editReview } from '../../store/reviews'
 import { FaStar } from 'react-icons/fa'
 
 
-function ReviewForm({ brew }) {
-    const [content, setContent] = useState("")
-    const [rating, setRating] = useState("")
+function ReviewEditForm({ brew, review }) {
+    const [content, setContent] = useState(review.content)
+    const [rating, setRating] = useState(review.rating)
     const [hover, setHover] = useState(null)
     const [errors, setErrors] = useState([]);
-    const {setShowModal} = useReviewModal();
+    const {setShowModal} = useReviewEditModal();
     const history = useHistory();
     const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user)
-
-    // console.log(rating)
+    const reviewId = review.id
+    console.log(review.id)
 
     useEffect(() => {
         let errors = []
@@ -42,7 +42,7 @@ function ReviewForm({ brew }) {
                 user_id: user?.id,
                 brewery_id: brew?.id,
             }
-            const data = await dispatch(createReview(new_review));
+            const data = await dispatch(editReview(new_review, reviewId));
             if (data.errors) {
                 setErrors(data.errors);
             } else {
@@ -56,15 +56,14 @@ function ReviewForm({ brew }) {
 
     return (
         <div className='review-create-container'>
-                    {/* <StarRating /> */}
             <form onSubmit={handleSubmit}>
                 <div>
                     {errors && errors.map((error, ind) => (
                         <div className='error-message' key={ind}>{error}</div>
-                        ))}
+                    ))}
                 </div>
                 <div className='review-form-container'>
-                    <div>
+                <div>
                         {[...Array(5)].map((star, i) => {
                             const rateVal = i + 1;
                             return (
@@ -109,4 +108,4 @@ function ReviewForm({ brew }) {
 
 }
 
-export default ReviewForm
+export default ReviewEditForm
