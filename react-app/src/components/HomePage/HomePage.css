@@ -33,6 +33,7 @@ margin-right: 100px;
     /* border-bottom: solid; */
     border-radius: 5px;
     margin-bottom: 10px;
+
 }
 
 .brew-snippet-link {
@@ -41,6 +42,8 @@ margin-right: 100px;
 }
 
 .brew-snippet-box-img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     height: 200px;
     width: 250px;
     object-fit: cover;
@@ -54,10 +57,14 @@ margin-right: 100px;
 .brew-snippet-lower {
     text-decoration: none;
     color: inherit;
-    border-bottom: solid;
-    border-right: solid;
-    border-left: solid;
+    border: solid;
+    border-width: 0 1px 1px;
+    /* border-right: thin;
+    border-left: thin; */
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     border-color: black;
+    padding: 10px;
 }
 
 .brew-snippet-image-background {
@@ -68,6 +75,8 @@ margin-right: 100px;
     justify-content: center;
     align-items: center;
     z-index: -1;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     /* position: relative; */
 
 
@@ -81,4 +90,9 @@ margin-right: 100px;
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
+}
+
+.review-rate-div {
+    display: flex;
+    align-items: center;
 }
