@@ -14,6 +14,10 @@ import PageNotFound from './components/NotFound';
 import BreweryPage from './components/BreweryPage';
 import BreweryHostForm from './components/BreweryHostForm';
 import ReviewForm from './components/ReviewForm';
+import AboutMenu from './components/Footer';
+import Footer from './components/Footer';
+import ImageAll from './components/ImageAllPage';
+import Search from './components/SearchBar/Search';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +47,7 @@ function App() {
   return (loaded &&
     <>
       {notLandingPage && (<NavBar loginForm={loginForm} setLoginForm={setLoginForm} />)}
+      {notLandingPage && (<Footer />)}
       <Switch>
         <Route path='/login'>
           <LoginForm />
@@ -53,18 +58,24 @@ function App() {
         <Route path='/brews/new'>
           <BreweryHostForm />
         </Route>
+        <Route path='/brews/:id/images'>
+          <h2>Hello Brewery Images Route</h2>
+          <ImageAll />
+        </Route>
         <Route path='/brews/:id'>
           <BreweryPage />
         </Route>
         <Route path='/profiles/:id' >
-          <h1>Hello Profiles Page</h1>
           <ProfilePage />
         </Route>
         <Route path='/' exact={true} >
           <HomePage />
         </Route>
+        <Route path='/search'>
+          <Search />
+        </Route>
         <Route>
-          <h1>Page NOT FOUND</h1>
+          <h2>hello from page not found</h2>
           <PageNotFound />
         </Route>
       </Switch>
