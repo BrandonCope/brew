@@ -31,6 +31,12 @@ const HomePage = () => {
           }
       }
 
+      const numOfRevs = (arr) => {
+          let num = 0
+          arr.forEach(rev => num += 1)
+          return num
+      }
+
     return (
         <>
         <div className="home-image-container">
@@ -50,8 +56,8 @@ const HomePage = () => {
                        <div className="brew-snippet-lower">
                            <div>
                         {brew.name}
-
                            </div>
+                           <div className="review-rate-div">
                            <div className="star-view-div">
                                         {[...Array(5)].map((star, i) => {
                                             const rateVal = i + 1;
@@ -65,6 +71,12 @@ const HomePage = () => {
                                                 </div>
                                             )
                                         })}
+                                    </div>
+                                        {numOfRevs(brew.rating)} Reviews
+
+                           </div>
+                                    <div>
+                                        {brew.city}, {brew.state}
                                     </div>
                        </div>
                        </NavLink>
