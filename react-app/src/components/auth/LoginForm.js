@@ -47,9 +47,10 @@ const LoginForm = () => {
     <>
     <div className='logo-home-container'>
       <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
-            <h2>Brew</h2>
+            <h2><i class="fa-brands fa-yelp"></i> Brew</h2>
           </NavLink>
     </div>
+    <div className='login-page'>
     <div className='login-form-container'>
       <h1>Log in to Brew</h1>
     <form onSubmit={onLogin}>
@@ -86,6 +87,10 @@ const LoginForm = () => {
         <div className='login-redirect-container'>
           <p>Don't have an account?</p>
           <NavLink className='switchFormButton' to="/sign-up" >Sign Up </NavLink>
+        </div>
+    </div>
+        <div className="login-image-div">
+           <img  className='login-image' alt="main page background" id="home-image" src="../../../images/signup_illustration.png" />
         </div>
     </div>
     </>

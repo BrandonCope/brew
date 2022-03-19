@@ -19,6 +19,7 @@ import Footer from './components/Footer';
 import ImageAll from './components/ImageAllPage';
 import Search from './components/SearchBar/Search';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [loginForm, setLoginForm] = useState(true)
@@ -59,7 +60,6 @@ function App() {
           <BreweryHostForm />
         </Route>
         <Route path='/brews/:id/images'>
-          <h2>Hello Brewery Images Route</h2>
           <ImageAll />
         </Route>
         <Route path='/brews/:id'>

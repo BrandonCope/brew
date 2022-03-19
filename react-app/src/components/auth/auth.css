@@ -80,11 +80,13 @@
 
 .login-form-button {
     background-color: #c41200;
+    border: 0;
     color: white;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
     width: 200px;
+    font-weight: bold;
 }
 
 .logo-home-container {
@@ -95,4 +97,15 @@
 
 .error-div {
     color: red;
+}
+
+.login-image {
+    height: 300px;
+    width: 300px;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
