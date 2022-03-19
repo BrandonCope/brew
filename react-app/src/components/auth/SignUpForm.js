@@ -80,7 +80,7 @@ const SignUpForm = () => {
     <>
     <div className='logo-home-container'>
       <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
-            <h2>Brew</h2>
+            <h2><i class="fa-brands fa-yelp"></i> Brew</h2>
           </NavLink>
     </div>
     <div className='signup-form-container'>
