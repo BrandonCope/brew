@@ -20,8 +20,8 @@ function ReviewForm({ brew }) {
 
     useEffect(() => {
         let errors = []
-        if (content.length >= 255) {
-            setErrors(['Max length of 255 characters reached.'])
+        if (content.length >= 2000) {
+            setErrors(['Max length of 2000 characters reached.'])
         } else {
             setErrors(errors)
         }
@@ -94,7 +94,7 @@ function ReviewForm({ brew }) {
                         rows="2"
                         column="15"
                         placeholder='Add a review...'
-                        maxLength="255"
+                        maxLength="2000"
                     >
                     </textarea>
                     <button className='review-post-button'>POST</button>

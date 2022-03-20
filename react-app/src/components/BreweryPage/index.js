@@ -58,11 +58,12 @@ const BreweryPage = () => {
                         </div>
                     </div>
                    <div className="brewery-detail-body-container">
-                   <div>
+                   <div className="brew-review-container">
                         <h3>Recommended Reviews</h3>
                         <div>
                             {filterReviewArr.map((review) => (
                                 <div>
+                                    <div className="brew-review-container-top">
                                     <h3>{review.first_name} {review.last_name.slice(0,1)}.</h3>
                                     {review.user_id === user?.id ? <div>
                                         <ReviewEditFormModal brew={brew} review={review} />
@@ -70,8 +71,7 @@ const BreweryPage = () => {
                                             dispatch(deleteReview(review.id))
                                         }}>Delete</button>
                                     </div> : <></>}
-                            
-                                    <p>{review.content}</p>
+                                    </div>
                                     <div className="star-view-div">
                                         {[...Array(5)].map((star, i) => {
                                             const rateVal = i + 1;
@@ -86,6 +86,8 @@ const BreweryPage = () => {
                                             )
                                         })}
                                     </div>
+
+                                    <p className="review-content">{review.content}</p>
                                 </div>
                             ))}
                         </div>

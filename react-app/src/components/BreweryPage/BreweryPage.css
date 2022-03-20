@@ -26,7 +26,8 @@
 
 .brewery-detail-body-container {
 display: flex;
-justify-content: space-around;
+justify-content: space-evenly;
+/* width: 800px; */
 }
 
 .brew-title {
@@ -44,4 +45,21 @@ input[type="radio"] {
 
 .star-view-div {
     display: flex;
+}
+
+.brew-review-container {
+    width: 500px;
+}
+
+.brew-review-container-top {
+    display: flex;
+    align-items: center;
+}
+
+.brew-review-container-top > h3 {
+    margin-right: 50px;
+}
+
+.review-content {
+    word-break: break-all;
 }
