@@ -47,19 +47,19 @@ const LoginForm = () => {
     <>
     <div className='logo-home-container'>
       <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
-            <h2><i class="fa-brands fa-yelp"></i> Brew</h2>
+            <h2><i className="fa-brands fa-yelp"></i> Brew</h2>
           </NavLink>
     </div>
     <div className='login-body'>
     <div className='login-page'>
       <div className='login-form-container'>
         <h1>Log in to Brew</h1>
-            <form onSubmit={onLogin}>
                 <div>
                   {errors.map((error, ind) => (
                     <div className='error-div' key={ind}>{error}</div>
                   ))}
                 </div>
+            <form onSubmit={onLogin}>
                 <div>
                   <input
                   className='login-input'

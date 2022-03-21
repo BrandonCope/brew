@@ -80,19 +80,19 @@ const SignUpForm = () => {
     <>
     <div className='logo-home-container'>
       <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
-            <h2><i class="fa-brands fa-yelp"></i> Brew</h2>
+            <h2><i className="fa-brands fa-yelp"></i> Brew</h2>
           </NavLink>
     </div>
     <div className='login-body'>
       <div className='login-page'>
     <div className='signup-form-container'>
       <h1 className="app-title">Sign up for Brew</h1>
-    <form onSubmit={onSignUp}>
       <div>
         {errors && errors.map((error, ind) => (
           <div className='error-div' key={ind}>{error}</div>
         ))}
       </div>
+    <form onSubmit={onSignUp}>
       <div>
         <input
           className='login-input'

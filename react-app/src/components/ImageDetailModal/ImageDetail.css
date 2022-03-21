@@ -1,0 +1,40 @@
+.image-button {
+    margin: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: inherit;
+    border: 0;
+}
+
+.image-modal-top {
+    display: flex;
+    height: 75px;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.image-modal-top-detail {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+.image-modal-top-detail > p{
+    margin-left: 15px;
+}
+.image-modal-top-detail > button{
+    margin-left: 15px;
+}
+
+.image-modal-bottom {
+    height: 500px;
+}
+
+.detail-content {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

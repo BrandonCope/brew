@@ -112,12 +112,12 @@ const BreweryHostForm = () => {
           <div className='login-page'>
             <div className='signup-form-container'>
       <h1 className="app-title">Host a Brewery</h1>
-    <form onSubmit={handleSubmit}>
       <div>
         {errors.map((error, ind) => (
           <div className='error-div' key={ind}>{error}</div>
         ))}
       </div>
+    <form onSubmit={handleSubmit}>
       <div>
         <input
         className='login-input'

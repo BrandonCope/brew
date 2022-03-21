@@ -62,11 +62,13 @@ const BreweryEditForm = ({brew}) => {
                 email,
             }
             const data = await dispatch(editBrewery(buildBrewery, brewId))
-            setShowModal(false)
             if (data.errors) {
-                setErrors(data.errors);
+              setErrors(data.errors);
+            } else {
+              setShowModal(false)
             }
-        } else {
+          } else {
+            history.push(`/login`)
         }
 
 
@@ -101,14 +103,15 @@ const BreweryEditForm = ({brew}) => {
     return (
         <div className="brew-edit-form-body-div">
       <h1 className="app-title">Edit Your Details</h1>
-    <form onSubmit={handleSubmit}>
       <div>
         {errors.map((error, ind) => (
           <div className='error-div' key={ind}>{error}</div>
         ))}
       </div>
+    <form className='brew-edit-form' onSubmit={handleSubmit}>
       <div>
         <input
+        className='input-field'
           placeholder='Brewery Name'
           type='text'
           name='name'
@@ -120,6 +123,7 @@ const BreweryEditForm = ({brew}) => {
       <div>
 
         <input
+        className='input-field'
         placeholder='Address'
           type='text'
           name='address'
@@ -130,6 +134,7 @@ const BreweryEditForm = ({brew}) => {
       <div>
 
         <input
+        className='input-field'
         placeholder='City'
           type='text'
           name='city'
@@ -141,6 +146,7 @@ const BreweryEditForm = ({brew}) => {
       <div>
 
         <input
+        className='input-field'
           placeholder='State Abbreviation: XX'
           type='state'
           name='state'
@@ -152,6 +158,7 @@ const BreweryEditForm = ({brew}) => {
       <div>
 
         <input
+        className='input-field'
           placeholder='ZIP code: XXXXX'
           type='state'
           name='repeat_state'
@@ -162,6 +169,7 @@ const BreweryEditForm = ({brew}) => {
       </div>
       <div>
         <input
+        className='input-field'
         placeholder='Phone: (XXX)XXX-XXXX'
           type='text'
           name='phone'
@@ -172,6 +180,7 @@ const BreweryEditForm = ({brew}) => {
       </div>
       <div>
         <input
+        className='input-field'
         placeholder='Email'
           type='text'
           name='email'
@@ -179,7 +188,7 @@ const BreweryEditForm = ({brew}) => {
           value={email}
         ></input>
       </div>
-      <button type='submit'>Submit</button>
+      <button className='login-form-button' type='submit'>Submit</button>
     </form>
         </div>
     )
