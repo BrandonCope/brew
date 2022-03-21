@@ -36,11 +36,9 @@ function ProfileButton({ user }) {
 
         <ul className="profile-dropdown">
           <div className='loggedInUserNav'>
-            <li className="profileItem">Hello, {user.username.slice(0, 10)}!</li>
-            <li className="profileItem" ><Link className="profileLink" to={`/profiles/${user.id}`}>My Profile</Link></li>
-            <li className="profileItem">
-              <LogoutButton className='logout-button' />
-            </li>
+            {/* <li className="profileItem">Hello, {user.username.slice(0, 10)}!</li> */}
+            <li className="profileItem" ><i class="fa-regular fa-user"></i>  <Link className="profileLink" to={`/profiles/${user.id}`}>My Profile</Link></li>
+            <li className="profileItem"><i class="fa-solid fa-arrow-right-from-bracket"></i> <LogoutButton /></li>
           </div>
         </ul>
 

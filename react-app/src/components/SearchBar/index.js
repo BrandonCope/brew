@@ -14,8 +14,8 @@ const SearchBar = () => {
         })
     }
     return (
-        <div>
-            <form onSubmit={handleSearch}>
+        <div className="search-bar-div">
+            <form className="search-bar-div" onSubmit={handleSearch}>
                 <input
                 className="search-bar-input"
                 placeholder="Search..."
@@ -24,7 +24,7 @@ const SearchBar = () => {
                 onChange={(e) => setSearchValue(e.target.value)}
                 required
                 ></input>
-                <button><i className="fa-solid fa-magnifying-glass"></i></button>
+                <button className="search-button"><i className="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
     )

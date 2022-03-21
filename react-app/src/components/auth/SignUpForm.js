@@ -83,16 +83,19 @@ const SignUpForm = () => {
             <h2><i class="fa-brands fa-yelp"></i> Brew</h2>
           </NavLink>
     </div>
+    <div className='login-body'>
+      <div className='login-page'>
     <div className='signup-form-container'>
       <h1 className="app-title">Sign up for Brew</h1>
     <form onSubmit={onSignUp}>
       <div>
-        {errors.map((error, ind) => (
+        {errors && errors.map((error, ind) => (
           <div className='error-div' key={ind}>{error}</div>
         ))}
       </div>
       <div>
         <input
+          className='login-input'
           placeholder='User Name'
           type='text'
           name='username'
@@ -103,6 +106,7 @@ const SignUpForm = () => {
       <div>
 
         <input
+        className='login-input'
         placeholder='Email'
           type='text'
           name='email'
@@ -113,6 +117,7 @@ const SignUpForm = () => {
       <div>
 
         <input
+        className='login-input'
         placeholder='First Name'
           type='text'
           name='first_name'
@@ -123,6 +128,7 @@ const SignUpForm = () => {
       <div>
 
         <input
+        className='login-input'
         placeholder='Last Name'
           type='text'
           name='last_name'
@@ -133,6 +139,7 @@ const SignUpForm = () => {
       <div>
 
         <input
+        className='login-input'
           placeholder='Password'
           type='password'
           name='password'
@@ -143,6 +150,7 @@ const SignUpForm = () => {
       <div>
 
         <input
+        className='login-input'
           placeholder='Confirm Password'
           type='password'
           name='repeat_password'
@@ -150,12 +158,17 @@ const SignUpForm = () => {
           value={repeatPassword}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className='login-form-button' type='submit'>Sign Up</button>
     </form>
         <div className='login-redirect-container'>
           <p>Have an account?</p>
           <NavLink className='switchFormButton' to="/login" >Login </NavLink>
         </div>
+
+      </div>
+        <img  className='login-image' alt="main page background" id="home-image" src="../../../images/signup_illustration.png" />
+    </div>
+
    </div>
     </>
   );

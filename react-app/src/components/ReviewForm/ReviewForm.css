@@ -1,0 +1,42 @@
+.review-create-container {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 550px;
+
+}
+
+.review-form-textarea {
+    resize: none;
+    border: 0;
+
+}
+
+.review-box-border {
+    border: solid;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.review-post-button {
+    margin-top: 5px;
+    padding: 10px;
+    border: 0;
+    background-color: #c41200;
+    color: white;
+    border-radius: 5px;
+    width: 175px;
+    cursor: pointer;
+}
+
+.review-stars {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.review-stars > p {
+    margin-left: 15px;
+}

@@ -108,7 +108,9 @@ const BreweryHostForm = () => {
 
 
     return (
-        <div className="host-form-body-div">
+        <div className='login-body'>
+          <div className='login-page'>
+            <div className='signup-form-container'>
       <h1 className="app-title">Host a Brewery</h1>
     <form onSubmit={handleSubmit}>
       <div>
@@ -118,6 +120,7 @@ const BreweryHostForm = () => {
       </div>
       <div>
         <input
+        className='login-input'
           placeholder='Brewery Name'
           type='text'
           name='name'
@@ -129,6 +132,7 @@ const BreweryHostForm = () => {
       <div>
 
         <input
+        className='login-input'
         placeholder='Address'
           type='text'
           name='address'
@@ -139,6 +143,7 @@ const BreweryHostForm = () => {
       <div>
 
         <input
+        className='login-input'
         placeholder='City'
           type='text'
           name='city'
@@ -150,6 +155,7 @@ const BreweryHostForm = () => {
       <div>
 
         <input
+        className='login-input'
           placeholder='State Abbreviation: XX'
           type='state'
           name='state'
@@ -161,6 +167,7 @@ const BreweryHostForm = () => {
       <div>
 
         <input
+        className='login-input'
           placeholder='ZIP code: XXXXX'
           type='state'
           name='repeat_state'
@@ -171,6 +178,7 @@ const BreweryHostForm = () => {
       </div>
       <div>
         <input
+        className='login-input'
         placeholder='Phone: (XXX)XXX-XXXX'
           type='text'
           name='phone'
@@ -181,6 +189,7 @@ const BreweryHostForm = () => {
       </div>
       <div>
         <input
+        className='login-input'
         placeholder='Email'
           type='text'
           name='email'
@@ -188,8 +197,11 @@ const BreweryHostForm = () => {
           value={email}
         ></input>
       </div>
-      <button type='submit'>Submit</button>
+      <button className='login-form-button' type='submit'>Submit</button>
     </form>
+
+            </div>
+          </div>
         </div>
     )
 }

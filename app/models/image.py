@@ -5,7 +5,7 @@ class Image(db.Model):
     __tablename__='images'
 
     id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     brewery_id = db.Column(db.Integer, db.ForeignKey("breweries.id"), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
@@ -17,7 +17,7 @@ class Image(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'url': self.url,
+            'image': self.image,
             'user_id': self.user_id,
             'brewery_id': self.brewery_id,
             'first_name': self.user.first_name,

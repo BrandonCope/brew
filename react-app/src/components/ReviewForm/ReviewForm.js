@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useReviewModal } from '.'
 import { createReview, editReview } from '../../store/reviews'
 import { FaStar } from 'react-icons/fa'
+import './ReviewForm.css'
 
 
 function ReviewForm({ brew }) {
@@ -56,15 +57,16 @@ function ReviewForm({ brew }) {
 
     return (
         <div className='review-create-container'>
-                    {/* <StarRating /> */}
+                   <h3>{brew.name}</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     {errors && errors.map((error, ind) => (
-                        <div className='error-message' key={ind}>{error}</div>
+                        <div className='error-div' key={ind}>{error}</div>
                         ))}
                 </div>
                 <div className='review-form-container'>
-                    <div>
+                    <div className='review-box-border'>
+                    <div className='review-stars'>
                         {[...Array(5)].map((star, i) => {
                             const rateVal = i + 1;
                             return (
@@ -85,20 +87,25 @@ function ReviewForm({ brew }) {
                                     />
                                 </label>
                                 )
-                        })}
+                            })}
+                            <p>
+                            Select your rating
+                            </p>
                     </div>
                     <textarea
                         className='review-form-textarea'
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
-                        rows="2"
-                        column="15"
-                        placeholder='Add a review...'
+                        rows="20"
+                        cols="65"
+                        placeholder='Doesn’t look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow…  there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). There’s about a million options available between the menu board and wall full of specials, so it can get a little overwhelming, but you really can’t go wrong. Not much else to say besides go see for yourself! You won’t be disappointed.
+                        '
                         maxLength="2000"
                     >
                     </textarea>
-                    <button className='review-post-button'>POST</button>
 
+                    </div>
+                    <button className='review-post-button'>Post Review</button>
                 </div>
                 <div>
 

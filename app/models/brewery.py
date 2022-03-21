@@ -31,6 +31,6 @@ class Brewery(db.Model):
             'phone': self.phone,
             'email': self.email,
             'host_id': self.host_id,
-            'images': [{'id':image.id,'url':image.url} for image in self.images],
+            'images': [{'id':image.id,'url':image.image} for image in self.images],
             'rating': [review.rating for review in self.reviews]
         }
