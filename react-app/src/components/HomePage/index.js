@@ -8,16 +8,9 @@ const HomePage = () => {
 
     const user = useSelector((state) => state.session.user)
     const brews = useSelector((state) => state.breweries)
-    const images = useSelector((state) => state.images)
-    const imageArr = Object.values(images)
-    // const filterImageArr = imageArr.filter((image => image?.brewery_id === +id))
     const brewArr = Object.values(brews)
     const filterBrewArr = brewArr.filter((brew) => brew?.host_id !== +user?.id)
 
-    // console.log('imageArr', imageArr[0])
-    const addDefaultSrc = (ev) => {
-        ev.target.src = 'Biggest-Craft-Beer-Releases-of-2017_fb.jpg'
-      }
 
       const avgRate = (arr) => {
           let num = 0
@@ -50,7 +43,6 @@ const HomePage = () => {
                    <div className="brew-snippet-box" key={brew.id}>
                        <NavLink className='brew-snippet-link' to={`/brews/${brew.id}`} >
                            <div className="brew-snippet-image-background">
-                               {/* <p className="default-background">Brew</p> */}
                                <img className="brew-snippet-box-img" src={brew.images[0]?.url} onError="../../../images/Biggest-Craft-Beer-Releases-of-2017_fb.jpg" />
                            </div>
                        <div className="brew-snippet-lower">

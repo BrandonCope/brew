@@ -34,13 +34,13 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
 
-        <ul className="profile-dropdown">
+        <div className="profile-dropdown">
           <div className='loggedInUserNav'>
             {/* <li className="profileItem">Hello, {user.username.slice(0, 10)}!</li> */}
-            <li className="profileItem" ><i class="fa-regular fa-user"></i>  <Link className="profileLink" to={`/profiles/${user.id}`}>My Profile</Link></li>
-            <li className="profileItem"><i class="fa-solid fa-arrow-right-from-bracket"></i> <LogoutButton /></li>
+            <div className="profileItem" ><Link className="profileLink" to={`/profiles/${user.id}`}><i class="fa-regular fa-user"></i> My Profile</Link></div>
           </div>
-        </ul>
+            <div className=""><LogoutButton /></div>
+        </div>
 
       )}
     </div>

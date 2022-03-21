@@ -6,25 +6,28 @@
 
 .image-all-page > h2 {
     justify-self: flex-start;
+    /* margin-right: 20px; */
 }
 
 
 .image-all-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    /* width: 300px; */
 }
 
 .image-all {
     width: 200px;
     height: 200px;
     object-fit: cover;
-    margin: 15px;
 }
 
 .image-matrix {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 800px;
 }
 
 .add-photo-button {
@@ -34,4 +37,5 @@
     background-color:#c41200;
     border-radius: 5px;
     color: white;
+    margin-left: 15px;
 }

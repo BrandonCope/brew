@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import ImageDetailModal from '../ImageDetailModal';
 import ImageFormModal from '../ImageForm';
 import './ImageAll.css'
 
@@ -23,15 +24,16 @@ const ImageAll = () => {
 
                 <div className='image-all-top'>
                     <h2>Photos for {brew.name}</h2>
-                <div>
-                    <ImageFormModal brew={brew} />
-                </div>
+                    <div>
+                        <ImageFormModal brew={brew} />
+                    </div>
                 </div>
                     ))}
                 <div className='image-matrix'>
                     {filterImageArr.map((image) => (
                         <div>
-                            <img className='image-all' src={image.image} />
+                            <ImageDetailModal image={image} />
+                            {/* <img className='image-all' src={image.image} /> */}
                         </div>
                     ))}
                 </div>

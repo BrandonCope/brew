@@ -34,7 +34,7 @@ const ProfilePage = () => {
          <div className="profile-body-div">
            <h1 className="home-sub-title">{user?.first_name} {user?.last_name.slice(0,1)}.</h1>
            <div className="brew-snippet-list-container">
-               {filterBrewArr?.map((brew) => (
+               {filterBrewArr.length > 0 ? filterBrewArr?.map((brew) => (
                    <div className="brew-snippet-box" key={brew.id}>
                        <NavLink className='brew-snippet-link' to={`/brews/${brew.id}`} >
                            <div className="brew-snippet-image-background">
@@ -69,7 +69,11 @@ const ProfilePage = () => {
                        </div>
                        </NavLink>
                    </div>
-               ))}
+               )) : <div className="no-brewery-div">
+                   <h1>Have a brewery to promote?</h1>
+                   <NavLink className='profile-host-navlink' to='/brews/new'>Host a Brewery</NavLink>
+                   </div>
+                   }
            </div>
         </div>
         </>

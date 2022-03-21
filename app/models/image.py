@@ -18,6 +18,7 @@ class Image(db.Model):
         return {
             'id': self.id,
             'image': self.image,
+            'created_at': self.created_at,
             'user_id': self.user_id,
             'brewery_id': self.brewery_id,
             'first_name': self.user.first_name,

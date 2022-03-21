@@ -1,13 +1,12 @@
 import React, { useState, createContext, useContext } from 'react';
 import { Modal } from '../../context/Modal';
-import ImageForm from './ImageForm';
-
-
+import ImageDetail from './ImageDetail';
+import './ImageDetail.css'
 
 export const ImageModalContext = createContext();
-export const useImageModal = () => useContext(ImageModalContext)
+export const useImageDetailModal = () => useContext(ImageModalContext)
 
-function ImageFormModal({brew}) {
+function ImageDetailModal({image}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -17,15 +16,14 @@ function ImageFormModal({brew}) {
         setShowModal
       }}
     >
-      <button className='add-photo-button' onClick={() => setShowModal(true)}><i class="fa-solid fa-camera"></i> Add Photo</button>
+      <button className="image-button" onClick={() => setShowModal(true)}><img className='image-all' src={image.image} /></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <ImageForm brew={brew} />
-            {/* <ImageForm brew={brew} review={review} /> */}
+         <ImageDetail image={image} />
         </Modal>
       )}
     </ImageModalContext.Provider>
   );
 }
 
-export default ImageFormModal;
+export default ImageDetailModal;

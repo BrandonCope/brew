@@ -1,3 +1,21 @@
 .profile-body-div {
     /* margin-top: 100px; */
 }
+
+.profile-host-navlink {
+    text-decoration: none;
+    background-color: #c41200;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+
+.no-brewery-div {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
