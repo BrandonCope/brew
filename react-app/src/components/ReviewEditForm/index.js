@@ -20,7 +20,6 @@ function ReviewEditFormModal({brew, review}) {
       <button className='reviewFormButton' onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <h2>Hello from review form</h2>
             <ReviewEditForm brew={brew} review={review} />
         </Modal>
       )}

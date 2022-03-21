@@ -1,0 +1,25 @@
+.image-create-container {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.image-form > button {
+    margin-top: 15px;
+}
+
+::file-selector-button {
+    margin-top: 5px;
+    background-color: #c41200;
+    border-radius: 5px;
+    border: 0;
+    padding:10px;
+    color: white;
+    cursor: pointer;
+}

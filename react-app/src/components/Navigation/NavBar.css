@@ -1,7 +1,7 @@
 .nav-container {
     display: flex;
     justify-content: space-around;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     background-color: #c41200;
     width: 100%;
@@ -61,7 +61,7 @@
     border-radius: 10px;
     top: 60px;
     min-height: 60px;
-    width: 100px;
+    width: 115px;
     padding-bottom: 30px;
     padding-right: 15px;
 
@@ -70,7 +70,7 @@
     align-items: center;
     justify-content: flex-start;
     list-style: none;
-    position: fixed;
+    position: absolute;
     text-decoration: none;
     color: inherit;
     padding: 15px;
@@ -111,7 +111,8 @@
     color: white;
     display: flex;
     align-items: center;
-    width: 108px;
+    width: 110px;
+    margin-right: 10px;
     /* padding: 50px; */
 
   }
@@ -119,4 +120,22 @@
   .host-form-li {
     display: flex;
     align-items: center;
+  }
+
+  .logout-button {
+    background-color: transparent;
+    color: inherit;
+    font-size: inherit;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+
+  .logout-button:hover {
+    background-color: #c41200;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
   }

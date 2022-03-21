@@ -20,8 +20,8 @@ function ReviewEditForm({ brew, review }) {
 
     useEffect(() => {
         let errors = []
-        if (content.length >= 255) {
-            setErrors(['Max length of 255 characters reached.'])
+        if (content.length >= 2000) {
+            setErrors(['Max length of 2000 characters reached.'])
         } else {
             setErrors(errors)
         }
@@ -56,54 +56,61 @@ function ReviewEditForm({ brew, review }) {
 
     return (
         <div className='review-create-container'>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    {errors && errors.map((error, ind) => (
-                        <div className='error-message' key={ind}>{error}</div>
-                    ))}
-                </div>
-                <div className='review-form-container'>
-                <div>
-                        {[...Array(5)].map((star, i) => {
-                            const rateVal = i + 1;
-                            return (
-                                <label>
+        <h3>{brew.name}</h3>
+ <form onSubmit={handleSubmit}>
+     <div>
+         {errors && errors.map((error, ind) => (
+             <div className='error-div' key={ind}>{error}</div>
+             ))}
+     </div>
+     <div className='review-form-container'>
+         <div className='review-box-border'>
+         <div className='review-stars'>
+             {[...Array(5)].map((star, i) => {
+                 const rateVal = i + 1;
+                 return (
+                     <label>
 
-                                    <input
-                                    type="radio"
-                                    value={rateVal}
-                                    onClick={() => setRating(rateVal)}
-                                    />
-                                    <FaStar
-                                    className="star"
-                                    color={rateVal <= (hover || rating) ? "ffc107" : "e4e5e9"}
-                                    size={30}
-                                    onMouseEnter={() => setHover(rateVal)}
-                                    onMouseLeave ={() => setHover(null)}
-                                    required
-                                    />
-                                </label>
-                                )
-                        })}
-                    </div>
-                    <textarea
-                        className='review-form-textarea'
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        rows="2"
-                        column="15"
-                        placeholder='Add a review...'
-                        maxLength="255"
-                    >
-                    </textarea>
-                    <button className='review-post-button'>POST</button>
+                         <input
+                         type="radio"
+                         value={rateVal}
+                         onClick={() => setRating(rateVal)}
+                         />
+                         <FaStar
+                         className="star"
+                         color={rateVal <= (hover || rating) ? "ffc107" : "e4e5e9"}
+                         size={30}
+                         onMouseEnter={() => setHover(rateVal)}
+                         onMouseLeave ={() => setHover(null)}
+                         required
+                         />
+                     </label>
+                     )
+                 })}
+                 <p>
+                 Select your rating
+                 </p>
+         </div>
+         <textarea
+             className='review-form-textarea'
+             value={content}
+             onChange={(e) => setContent(e.target.value)}
+             rows="20"
+             cols="65"
+             placeholder='Doesn’t look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow…  there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). There’s about a million options available between the menu board and wall full of specials, so it can get a little overwhelming, but you really can’t go wrong. Not much else to say besides go see for yourself! You won’t be disappointed.
+             '
+             maxLength="2000"
+         >
+         </textarea>
 
-                </div>
-                <div>
+         </div>
+         <button className='review-post-button'>Edit Review</button>
+     </div>
+     <div>
 
-                </div>
-            </form>
-        </div>
+     </div>
+ </form>
+</div>
     )
 
 }

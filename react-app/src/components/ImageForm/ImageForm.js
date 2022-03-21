@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useImageModal } from '.';
 import { createImage } from '../../store/images';
+import './ImageForm.css'
 
 
 function ImageForm({ brew }) {
@@ -13,6 +14,14 @@ function ImageForm({ brew }) {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user)
 
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        console.log(e.target.files)
+        console.log(file)
+        setURL(file);
+    }
+    console.log(url)
+
     useEffect(() => {
         let errors = []
         setErrors(errors)
@@ -21,14 +30,24 @@ function ImageForm({ brew }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (user) {
 
-            const new_image = {
-                url,
-                user_id: user?.id,
-                brewery_id: brew?.id,
-            }
-            const data = await dispatch(createImage(new_image));
+        if (user) {
+        const formData = new FormData()
+        formData.append("image", url)
+        console.log(formData.image)
+        formData.append("user_id", user?.id)
+        formData.append("brewery_id", brew?.id)
+
+        //     const formData = {
+        //         url,
+        //         user_id: user?.id,
+        //         brewery_id: brew?.id,
+        //     }
+        //     }
+        console.log(formData)
+
+        const data = await dispatch(createImage(formData));
+        console.log(data)
             if (data.errors) {
                 setErrors(data.errors);
             } else {
@@ -41,17 +60,24 @@ function ImageForm({ brew }) {
 
     return (
         <div className='image-create-container'>
-            <form onSubmit={handleSubmit}>
+            <h2>{brew.name}: Add Photos</h2>
+            <form className='image-form' onSubmit={handleSubmit}>
                 <div>
                     {errors && errors.map((error, ind) => (
-                        <div className='error-message' key={ind}>{error}</div>
+                        <div className='error-div' key={ind}>{error}</div>
                     ))}
+                        {/* <img src={url?.name}></img> */}
                 </div>
-                <div className='review-form-container'>
                     <label>
-                        Image URL:
                     </label>
                     <input
+                    id="file-upload"
+                    type='file'
+                    accept="image/*"
+                    name="image"
+                    onChange={updateImage}
+                    />
+                    {/* <input
                         className='review-form-textarea'
                         value={url}
                         onChange={(e) => setURL(e.target.value)}
@@ -60,13 +86,8 @@ function ImageForm({ brew }) {
                         placeholder='Paste Image URL...'
                         maxLength="255"
                     >
-                    </input>
-                    <button className='image-post-button'>POST</button>
-
-                </div>
-                <div>
-
-                </div>
+                    </input> */}
+                    <button className='review-post-button'>POST</button>
             </form>
         </div>
     )

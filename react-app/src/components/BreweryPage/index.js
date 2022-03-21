@@ -27,34 +27,70 @@ const BreweryPage = () => {
     const filterReviewArr = reviewArr.filter((review) => review?.brewery_id === +id)
     console.log(filterReviewArr)
 
+    const avgRate = (arr) => {
+        let num = 0
+        arr.forEach(element => {
+          num += element
+        });
+        if (num) {
+            return Math.round(num/arr.length)
+        } else {
+            return 0
+        }
+    }
+
+    const numOfRevs = (arr) => {
+        let num = 0
+        arr.forEach(rev => num += 1)
+        return num
+    }
+
 
     return (
         <div className="brewery-page-div">
            {filterBrewArr?.map((brew) => (
                <div key={brew.id}>
                    <div id="carousel">
-                   {filterImageArr.map((image) => (
+                         {filterImageArr.map((image) => (
                            <div key={image.id} className="slide">
-                           <img className="carousel-images" alt='beer and barstools' src={image?.url} />
+                           <img className="carousel-images" alt='beer and barstools' src={image?.image} />
                            </div>
-                   ))}
+                         ))}
+                         <div className="brew-page-title">
+                             <div className="carousel-content">
+                                <div>
+                                <h1>{brew.name}</h1>
+                                    <div className="star-view-div">
+                                        {[...Array(5)].map((star, i) => {
+                                            const rateVal = i + 1;
+                                            return (
+                                                <div >
+                                                    <FaStar
+                                                    className="star-view"
+                                                    color={rateVal <= avgRate(brew.rating) ? "ffc107" : "e4e5e9"}
+                                                    size={40}
+                                                    />
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            <div>
+                                <NavLink className='all-photo' to={`/brews/${brew.id}/images`} >See All Photos</NavLink>
+                            </div>
+                             </div>
+                         </div>
                    </div>
-                    <div className="brew-title">
-                        <div>
-                        <h2>{brew.name}</h2>
-                        </div>
-                        <div>
+                    <div className="brew-body">
+                        <div className="review-photo-div">
                         {brew?.host_id === user?.id ? <div>
                             <BreweryEditFormModal brew={brew} />
-                            <button onClick={(e) => {
+                            <button className="reviewFormButton" onClick={(e) => {
                                 dispatch(deleteBrewery(brew.id))
                                 history.push(`/profiles/${user?.id}`)
                                 }}>Delete</button>
                         </div> : <><ReviewFormModal brew={brew} /></>}
                         <ImageFormModal brew={brew} />
-                        </div>
-                        <div>
-                            <NavLink to={`/brews/${brew.id}/images`} >See All Photos</NavLink>
                         </div>
                     </div>
                    <div className="brewery-detail-body-container">
@@ -65,9 +101,11 @@ const BreweryPage = () => {
                                 <div>
                                     <div className="brew-review-container-top">
                                     <h3>{review.first_name} {review.last_name.slice(0,1)}.</h3>
-                                    {review.user_id === user?.id ? <div>
+                                    {review.user_id === user?.id ? <div className="review-edit-delete">
                                         <ReviewEditFormModal brew={brew} review={review} />
-                                        <button onClick={(e) => {
+                                        <button
+                                        className="reviewFormButton"
+                                        onClick={(e) => {
                                             dispatch(deleteReview(review.id))
                                         }}>Delete</button>
                                     </div> : <></>}

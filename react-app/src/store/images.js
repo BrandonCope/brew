@@ -1,13 +1,10 @@
 const LOAD = '/images/load'
 const ADD = '/images/add'
-// const UPDATE = '/images/edit'
 const REMOVE = '/images/remove'
 
 const loadImages = (images) => ({type: LOAD, images});
 
 const addImage = new_image => ({ type: ADD, new_image })
-
-// const updateImage = edit_image => ({ type: UPDATE, edit_image })
 
 const removeImage = remove_image => ({ type: REMOVE, remove_image })
 
@@ -23,10 +20,7 @@ export const getImages = () => async dispatch => {
 export const createImage = (payload) => async dispatch => {
     const response = await fetch('/api/images/', {
         method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
+        body: payload,
     });
     if(response.ok) {
         const new_image = await response.json();
@@ -34,7 +28,7 @@ export const createImage = (payload) => async dispatch => {
         return new_image;
     } else if (response.status < 500) {
         const data = await response.json();
-        if (data.errors) {
+        if (data) {
             return data;
         }
     }
