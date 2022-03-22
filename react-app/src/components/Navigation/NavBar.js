@@ -53,7 +53,7 @@ const NavBar = ({ loginForm, setLoginForm }) => {
     <div className='nav-body-div'>
     <nav className='nav-container'>
           <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
-              <h2><i class="fa-brands fa-yelp"></i> Brew</h2>
+              <h2 className='logo-title'><i className="fa-brands fa-yelp"></i><div className='brew-logo'>Brew</div></h2>
           </NavLink>
         <div>
           <SearchBar />

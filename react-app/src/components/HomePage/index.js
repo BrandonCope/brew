@@ -33,10 +33,10 @@ const HomePage = () => {
     return (
         <>
         <div className="home-image-container">
-           <img alt="main page background" id="home-image" src="../../../images/Biggest-Craft-Beer-Releases-of-2017_fb.jpg" />
+           <img alt="main page background" id="home-image" src="https://brew-aa.s3.amazonaws.com/43f50e81ce134ce9883d3719d9671205.jpg" />
         </div>
 
-        <div className="">
+        <div className="home-body-div">
            <h1 className="home-sub-title">Your Next Review Awaits</h1>
            <div className="brew-snippet-list-container">
                {filterBrewArr?.map((brew) => (

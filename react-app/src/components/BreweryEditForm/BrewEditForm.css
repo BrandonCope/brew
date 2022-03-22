@@ -25,3 +25,48 @@
     margin-right: 5px;
 }
 
+
+
+.edit-host-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 50px; */
+    padding: 15px;
+}
+
+.edit-host-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.edit-host-form-container {
+    /* border: solid; */
+    /* width: 300px; */
+    /* height: 400px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+}
+
+.edit-host-form-container > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 350px;
+    width: 400px;
+}
+
+.edit-host-form-container > form > button {
+    background-color: #c41200;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 200px;
+}

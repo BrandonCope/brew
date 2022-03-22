@@ -39,7 +39,7 @@ const ProfilePage = () => {
                        <NavLink className='brew-snippet-link' to={`/brews/${brew.id}`} >
                            <div className="brew-snippet-image-background">
                                {/* <p className="default-background">Brew</p> */}
-                               <img className="brew-snippet-box-img" src={brew.images[0]?.url} onError="../../../images/Biggest-Craft-Beer-Releases-of-2017_fb.jpg" />
+                               <img className="brew-snippet-box-img" src={brew.images[0]?.url}/>
                            </div>
                        <div className="brew-snippet-lower">
                            <div>

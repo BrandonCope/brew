@@ -88,7 +88,7 @@ const BreweryPage = () => {
                             <button className="reviewFormButton" onClick={(e) => {
                                 dispatch(deleteBrewery(brew.id))
                                 history.push(`/profiles/${user?.id}`)
-                                }}>Delete</button>
+                                }}>Delete Page</button>
                         </div> : <><ReviewFormModal brew={brew} /></>}
                         <ImageFormModal brew={brew} />
                         </div>

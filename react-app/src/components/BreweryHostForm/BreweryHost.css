@@ -1,3 +1,75 @@
-.host-form-body-div {
+/* .host-form-body-div {
     margin-top: 100px;
+} */
+
+.zip-state {
+    display: flex;
+}
+
+.host-input {
+    padding: 10px;
+    border-radius: 5px;
+    width: 175px;
+    border: solid;
+    border-width: 2px;
+}
+
+.host-zip-input {
+    padding: 10px;
+    border-radius: 5px;
+    width: 115px;
+    border: solid;
+    border-width: 2px;
+}
+
+.host-select {
+    margin-right: 5px;
+    border-radius: 5px;
+    border: solid;
+    border-width: 2px;
+    cursor: pointer;
+}
+
+.host-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.host-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.host-form-container {
+    /* border: solid; */
+    /* width: 300px; */
+    /* height: 400px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    margin-top: 73px;
+}
+
+.host-form-container > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 350px;
+    width: 600px;
+}
+
+.host-form-container > form > button {
+    background-color: #c41200;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 200px;
 }

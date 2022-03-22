@@ -9,7 +9,7 @@ const Footer = () => {
                 {/* <AboutMenu /> */}
                 <div className="about-icons">
                                     <div>About:</div>
-                                    <a href="https://github.com/BrandonCope" target="_blank" rel="noopener noreferrer">
+                                    <a href="https://github.com/BrandonCope/brew" target="_blank" rel="noopener noreferrer">
                                         <div className="about-github">
                                             <i className="fa-brands fa-github"></i>
                                         </div>

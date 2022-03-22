@@ -93,7 +93,7 @@ const LoginForm = () => {
             </div>
         </div>
 
-           <img  className='login-image' alt="main page background" id="home-image" src="../../../images/signup_illustration.png" />
+           <img  className='login-image' alt="main page background" id="home-image" src="https://brew-aa.s3.amazonaws.com/b7a4237624984a8483810d5cbb96a555.png" />
 
       </div>
 

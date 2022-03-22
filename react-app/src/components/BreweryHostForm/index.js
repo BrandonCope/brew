@@ -28,20 +28,20 @@ const BreweryHostForm = () => {
         if (city.length >= 40) {
             errors.push('City: Max length of 40 characters reached.')
         }
-        if (state.length > 2) {
-            errors.push('State: Max length of 2 characters reached.')
-        }
+        // if (state.length > 2) {
+        //     errors.push('State: Max length of 2 characters reached.')
+        // }
         if (zip_code.length > 5) {
             errors.push('ZIP code: Max length of 5 characters reached.')
         }
-        if (phone.length > 13) {
-            errors.push('Phone: Max length of 13 characters reached.')
+        if (phone.length > 14) {
+            errors.push('Phone: Max length of 14 characters exceeded.')
         }
         if (email.length >= 255) {
             errors.push(['Email: Max length of 255 characters reached.'])
         }
         setErrors(errors)
-    }, [name, email, address, city, state, zip_code, phone])
+    }, [name, email, address, city, zip_code, phone])
 
     const reset = () => {
         setName("");
@@ -52,6 +52,13 @@ const BreweryHostForm = () => {
         setPhone("");
         setEmail("");
     }
+
+    const states = [
+      "State", "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",
+      "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA",
+      "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE",
+      "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",
+      "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -99,18 +106,32 @@ const BreweryHostForm = () => {
         const updateZipCode = (e) => {
             setZipCode(e.target.value);
         };
+        const handlePhoneNumber = (e) => {
+          const formattedNumber = formatNumber(e.target.value);
+          setPhone(formattedNumber)
+        }
         const updatePhone = (e) => {
-          setPhone(e.target.value);
+          handlePhoneNumber(e);
         };
+        const formatNumber = (value) => {
+          if (!value) return value;
+          const number = value.replace(/[^\d]/g,"")
+          const numberLength = number.length
+          if (numberLength < 4) return number;
+          if (numberLength < 7) {
+            return `(${number.slice(0,3)}) ${number.slice(3)}`;
+          }
+          return `(${number.slice(0,3)}) ${number.slice(3,6)}-${number.slice(6,10)}`
+        }
         const updateEmail = (e) => {
           setEmail(e.target.value);
         };
 
 
     return (
-        <div className='login-body'>
-          <div className='login-page'>
-            <div className='signup-form-container'>
+        <div className='host-body'>
+          <div className='host-page'>
+            <div className='host-form-container'>
       <h1 className="app-title">Host a Brewery</h1>
       <div>
         {errors.map((error, ind) => (
@@ -120,7 +141,7 @@ const BreweryHostForm = () => {
     <form onSubmit={handleSubmit}>
       <div>
         <input
-        className='login-input'
+        className='host-input'
           placeholder='Brewery Name'
           type='text'
           name='name'
@@ -132,7 +153,7 @@ const BreweryHostForm = () => {
       <div>
 
         <input
-        className='login-input'
+        className='host-input'
         placeholder='Address'
           type='text'
           name='address'
@@ -143,7 +164,7 @@ const BreweryHostForm = () => {
       <div>
 
         <input
-        className='login-input'
+        className='host-input'
         placeholder='City'
           type='text'
           name='city'
@@ -153,43 +174,39 @@ const BreweryHostForm = () => {
         ></input>
       </div>
       <div>
-
-        <input
-        className='login-input'
-          placeholder='State Abbreviation: XX'
-          type='state'
-          name='state'
-          maxLength={2}
-          onChange={updateState}
-          value={state}
-        ></input>
-      </div>
+      <div className='zip-state'>
+        <select  className='host-select' onChange={updateState}>
+          {states.map((state) => (
+            <option value={state}>{state}</option>
+          ))}
+        </select>
       <div>
-
         <input
-        className='login-input'
+        className='host-zip-input'
           placeholder='ZIP code: XXXXX'
-          type='state'
-          name='repeat_state'
+          type='zip-input'
+          name='zip-input'
           onChange={updateZipCode}
           value={zip_code}
           maxLength={5}
         ></input>
       </div>
+      </div>
+      </div>
       <div>
         <input
-        className='login-input'
+        className='host-input'
         placeholder='Phone: (XXX)XXX-XXXX'
           type='text'
           name='phone'
           onChange={updatePhone}
           value={phone}
-          maxLength={13}
+          maxLength={14}
         ></input>
       </div>
       <div>
         <input
-        className='login-input'
+        className='host-input'
         placeholder='Email'
           type='text'
           name='email'
