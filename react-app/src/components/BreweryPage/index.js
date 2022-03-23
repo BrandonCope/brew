@@ -23,7 +23,7 @@ const BreweryPage = () => {
     const imageArr = Object.values(images)
     const filterImageArr = imageArr.filter((image => image?.brewery_id === +id))
     const reviews = useSelector((state) => state.reviews)
-    const reviewArr = Object.values(reviews)
+    const reviewArr = Object.values(reviews).reverse()
     const filterReviewArr = reviewArr.filter((review) => review?.brewery_id === +id)
     console.log(filterReviewArr)
 
@@ -98,7 +98,7 @@ const BreweryPage = () => {
                         <h3>Recommended Reviews</h3>
                         <div>
                             {filterReviewArr.map((review) => (
-                                <div>
+                                <div className="review-box">
                                     <div className="brew-review-container-top">
                                     <h3>{review.first_name} {review.last_name.slice(0,1)}.</h3>
                                     {review.user_id === user?.id ? <div className="review-edit-delete">

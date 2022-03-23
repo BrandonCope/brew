@@ -22,6 +22,8 @@ class Review(db.Model):
             'rating': self.rating,
             'user_id': self.user_id,
             'brewery_id': self.brewery_id,
+            'created_at': self.created_at,
+            'brew_name': self.breweries.name,
             'username': self.user.username,
             'first_name': self.user.first_name,
             'last_name': self.user.last_name

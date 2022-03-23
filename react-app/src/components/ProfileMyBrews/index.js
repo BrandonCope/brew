@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom';
+import React from "react"
+import { useSelector } from "react-redux"
+import { NavLink } from "react-router-dom"
 import { FaStar } from 'react-icons/fa'
-import './Search.css'
+import ProfileNav from "../ProfileNav"
 
-const Search = () => {
-    const location = useLocation()
-
+const ProfileMyBrews = () => {
+    const user = useSelector((state) => state.session.user)
     const brews = useSelector((state) => state.breweries)
-    const brewsArr = Object.values(brews)
+    const brewArr = Object.values(brews)
+    const filterBrewArr = brewArr.filter((brew) => brew?.host_id === +user?.id)
 
-    const searchArr = brewsArr.filter(({name, images, rating, city, state, id}) => {
-        return name.toLowerCase().includes(location.state.detail.toLowerCase())
-    })
 
     const avgRate = (arr) => {
         let num = 0
@@ -32,22 +29,22 @@ const Search = () => {
         return num
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    })
-
     return (
-        <div className='search-result-div'>
-            {searchArr.length ? searchArr?.map(({name, images, rating, city, state, id}) => (
-                    <div className='brew-snippet-box'>
-                <Link className='brew-snippet-link' to={`brews/${id}`} key={id} >
-                                  <div className="search-brew-snippet-image-background">
+        <>
+           <h1 className="profile-name-title">{user?.first_name} {user?.last_name.slice(0,1)}.</h1>
+         <div className="profile-body-div">
+                   <ProfileNav />
+           <div className="brew-snippet-list-container">
+               {filterBrewArr.length > 0 ? filterBrewArr?.map((brew) => (
+                   <div className="brew-snippet-box" key={brew.id}>
+                       <NavLink className='brew-snippet-link' to={`/brews/${brew.id}`} >
+                           <div className="brew-snippet-image-background">
                                {/* <p className="default-background">Brew</p> */}
-                               <img className="brew-snippet-box-img" src={images[0]?.url} onError="../../../images/Biggest-Craft-Beer-Releases-of-2017_fb.jpg" />
+                               <img className="brew-snippet-box-img" src={brew.images[0]?.url}/>
                            </div>
                        <div className="brew-snippet-lower">
                            <div>
-                        {name}
+                        {brew.name}
                            </div>
                            <div className="review-rate-div">
                            <div className="star-view-div">
@@ -57,27 +54,31 @@ const Search = () => {
                                                 <div >
                                                     <FaStar
                                                     className="star-view"
-                                                    color={rateVal <= avgRate(rating) ? "ffc107" : "e4e5e9"}
+                                                    color={rateVal <= avgRate(brew.rating) ? "ffc107" : "e4e5e9"}
                                                     size={20}
                                                     />
                                                 </div>
                                             )
                                         })}
                                     </div>
-                                        {numOfRevs(rating)} Reviews
+                                        {numOfRevs(brew.rating)} Reviews
 
                            </div>
                                     <div>
-                                        {city}, {state}
+                                        {brew.city}, {brew.state}
                                     </div>
                        </div>
-                </Link>
-
-
-                    </div>
-            )) : <h2>No Results Found</h2>}
+                       </NavLink>
+                   </div>
+               )) : <div className="no-brewery-div">
+                   <h1>Have a brewery to promote?</h1>
+                   <NavLink className='profile-host-navlink' to='/brews/new'>Host a Brewery</NavLink>
+                   </div>
+                   }
+           </div>
         </div>
+        </>
     )
 }
 
-export default Search
+export default ProfileMyBrews

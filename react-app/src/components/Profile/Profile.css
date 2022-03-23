@@ -1,5 +1,13 @@
 .profile-body-div {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+}
+
+.profile-name-title {
     margin-top: 100px;
+    display: flex;
+    justify-content: center;
 }
 
 .profile-host-navlink {
@@ -18,4 +26,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.brew-snippet-list-container {
+
 }

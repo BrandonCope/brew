@@ -21,7 +21,7 @@ const ImageDetail = ({image}) => {
 
     return (
         <>
-        <div>
+        <div className="image-modal-div">
             <div className="image-modal-top">
                 <div>
                     <div className="image-modal-top-detail">

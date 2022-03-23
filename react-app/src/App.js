@@ -18,6 +18,9 @@ import AboutMenu from './components/Footer';
 import Footer from './components/Footer';
 import ImageAll from './components/ImageAllPage';
 import Search from './components/SearchBar/Search';
+import ProfileMyBrews from './components/ProfileMyBrews';
+import ProfileMyReviews from './components/ProfileMyReviews';
+import ProfileMyImages from './components/MyImages';
 
 
 function App() {
@@ -65,7 +68,16 @@ function App() {
         <Route path='/brews/:id'>
           <BreweryPage />
         </Route>
-        <Route path='/profiles/:id' >
+        <Route path='/profiles/brews' >
+          <ProfileMyBrews />
+        </Route>
+        <Route path='/profiles/reviews' >
+          <ProfileMyReviews />
+        </Route>
+        <Route path='/profiles/images' >
+          <ProfileMyImages />
+        </Route>
+        <Route path='/profiles' >
           <ProfilePage />
         </Route>
         <Route path='/' exact={true} >

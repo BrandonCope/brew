@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import ImageDetailModal from '../ImageDetailModal';
 import ImageFormModal from '../ImageForm';
 import './ImageAll.css'
@@ -19,6 +19,7 @@ const ImageAll = () => {
 
     return (
         <div className='image-all-page'>
+        <NavLink className='return-link' to={`/brews/${id}`}>Return</NavLink>
             <div>
             {filterBrewArr.map((brew) => (
 

@@ -71,6 +71,7 @@ input[type="radio"] {
 .brew-review-container-top {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .brew-review-container-top > h3 {
@@ -127,6 +128,10 @@ input[type="radio"] {
 .review-photo-div > button {
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.review-box {
+    border-top: #c41200 2px solid;
 }
 
 @media screen and (max-width: 750px)
