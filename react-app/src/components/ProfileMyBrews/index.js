@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 import { FaStar } from 'react-icons/fa'
 import ProfileNav from "../ProfileNav"
 import { getBrews } from "../../store/brews"
+import './Profile.css'
 
 const ProfileMyBrews = () => {
     const dispatch = useDispatch()
