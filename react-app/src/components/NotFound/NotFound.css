@@ -1,8 +1,10 @@
 .homer-quote {
     width: 100%;
+    height: 800px;
+    object-fit: cover;
 }
 
 .not-found-message {
-    /* position: absolute;
-    color: white; */
+    position: absolute;
+    color: white;
 }
