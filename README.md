@@ -22,7 +22,7 @@ Schema of how PostgreSQL database will be set up
 
 Wireframe of how pages will layout.
 
-## [API Documentation](https://github.com/BrandonCope/insta_clone/wiki/API-Documentation)
+## [API Documentation](https://github.com/BrandonCope/brew/wiki/API-Documentation)
 
 API routes that will be used by the backend server
 
