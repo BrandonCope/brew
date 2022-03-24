@@ -5,7 +5,6 @@ import { useReviewModal } from '.'
 import { createReview } from '../../store/reviews'
 import { FaStar } from 'react-icons/fa'
 import './ReviewForm.css'
-import { getBrews } from '../../store/brews'
 
 
 function ReviewForm({ brew }) {
@@ -21,7 +20,6 @@ function ReviewForm({ brew }) {
 
 
     useEffect(() => {
-        dispatch(getBrews())
         let errors = []
         if (content.length >= 2000) {
             setErrors(['Max length of 2000 characters reached.'])

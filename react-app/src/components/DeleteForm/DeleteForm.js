@@ -17,13 +17,20 @@ const DeleteForm = ({review, image, brew}) => {
       e.preventDefault()
       setShowModal(false)
   }
-    const deleteElemenent = (e) => {
+    const deleteElemenent = async e => {
         e.preventDefault()
         if (review) dispatch(deleteReview(review.id))
-        if (image) dispatch(deleteImage(image.id))
-        if (brew) {
+        if (image) {
+            dispatch(deleteImage(image.id))
             dispatch(getBrews())
-            dispatch(deleteBrewery(brew.id))
+        }
+        if (brew) {
+
+            brew.images.forEach(image => {
+                dispatch(deleteImage(image.id))
+            })
+
+            await dispatch(deleteBrewery(brew.id))
             history.push(`/profiles/brews`)
         }
     };

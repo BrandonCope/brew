@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useImageModal } from '.';
+import { getBrews } from '../../store/brews';
 
 import { createImage } from '../../store/images';
 import './ImageForm.css'
@@ -48,6 +49,7 @@ function ImageForm({ brew }) {
             if (data.errors) {
                 setErrors(data.errors);
             } else {
+                dispatch(getBrews())
                 setShowModal(false)
             }
         } else {

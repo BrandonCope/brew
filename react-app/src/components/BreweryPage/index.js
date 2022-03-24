@@ -1,25 +1,17 @@
-import React, { useEffect } from "react"
-import { NavLink, useHistory, useParams } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import './BreweryPage.css'
+import React from "react"
+import { NavLink, useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { FaStar } from 'react-icons/fa'
 import BreweryEditFormModal from "../BreweryEditForm"
-import { getBrews } from "../../store/brews"
 import ReviewFormModal from "../ReviewForm"
 import ImageFormModal from "../ImageForm"
-import { FaStar } from 'react-icons/fa'
 import PageNotFound from "../NotFound"
 import ReviewList from "../ReviewList"
 import DeleteFormModal from "../DeleteForm"
+import './BreweryPage.css'
 
 const BreweryPage = () => {
     const {id} = useParams()
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getBrews())
-
-    }, [dispatch])
-
     const user = useSelector((state) => state.session.user)
     const brews = useSelector((state) => state.breweries)
     const brewArr = Object.values(brews)

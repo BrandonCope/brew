@@ -1,19 +1,11 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useImageDetailProfileModal } from ".";
-import { deleteImage } from "../../store/images";
+import DeleteFormModal from "../DeleteForm";
 
 const ImageProfileDetail = ({image}) => {
     const {setShowModal} = useImageDetailProfileModal()
-    const dispatch = useDispatch()
-
     const user = useSelector((state) => state.session.user)
-
-
-    const removeImage = (e) => {
-        e.preventDefault()
-        dispatch(deleteImage(image?.id))
-    }
 
     const cancelClick = (e) => {
         e.preventDefault()
@@ -28,7 +20,7 @@ const ImageProfileDetail = ({image}) => {
                     <div className="image-modal-top-detail">
                     <h3>At: {image.brew_name}</h3>
                     <p>{image.created_at.slice(0,17)}</p>
-                    {user?.id === image?.user_id ? <button onClick={removeImage} className='add-photo-button'>Delete Image</button> : <></>}
+                    {user?.id === image?.user_id ? <DeleteFormModal image={image} /> : <></>}
                     </div>
                 </div>
                 <div><button onClick={cancelClick} className='add-photo-button'><i className="fa-solid fa-xmark"></i></button></div>

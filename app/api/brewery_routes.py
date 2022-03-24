@@ -1,6 +1,7 @@
+from asyncio import constants
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Brewery
+from app.models import db, Brewery, Image
 from app.forms import BreweryForm, BreweryEditForm
 
 brewery_routes = Blueprint('brewery', __name__)
@@ -62,4 +63,4 @@ def delete_breweries(id):
         delete_brewery = Brewery.query.get(id)
         db.session.delete(delete_brewery)
         db.session.commit()
-        return {'message': "Success"}
+        return delete_brewery.to_dict()
