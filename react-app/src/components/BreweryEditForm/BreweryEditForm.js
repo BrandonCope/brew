@@ -15,8 +15,8 @@ const BreweryEditForm = ({brew}) => {
     const [phone, setPhone] = useState(`${brew.phone}`);
     const [email, setEmail] = useState(`${brew.email}`);
     const {setShowModal} = useEditModal();
+
     const user = useSelector(state => state.session.user);
-    const id = user?.id
     const brewId = brew?.id
     const dispatch = useDispatch();
     const history = useHistory();
@@ -80,6 +80,10 @@ const BreweryEditForm = ({brew}) => {
 
 
     }
+    const cancelClick = (e) => {
+      e.preventDefault()
+      setShowModal(false)
+  }
 
       const updateName = (e) => {
         setName(e.target.value);
@@ -129,7 +133,7 @@ const BreweryEditForm = ({brew}) => {
       <div>
         {errors.map((error, ind) => (
           <div className='error-div' key={ind}>{error}</div>
-        ))}
+          ))}
       </div>
     <form onSubmit={handleSubmit}>
       <div>
@@ -170,8 +174,8 @@ const BreweryEditForm = ({brew}) => {
       <div className='zip-state'>
         <select value={state}  className='host-select' onChange={updateState}>
           {states.map((state) => (
-            <option value={state}>{state}</option>
-          ))}
+            <option key={state} value={state}>{state}</option>
+            ))}
         </select>
       <div>
         <input
@@ -212,6 +216,7 @@ const BreweryEditForm = ({brew}) => {
 
             </div>
           </div>
+<div className='close-modal-button'><button onClick={cancelClick} className='add-photo-button'><i className="fa-solid fa-xmark"></i></button></div>
         </div>
     )
 }

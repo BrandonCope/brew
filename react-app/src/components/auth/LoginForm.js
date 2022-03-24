@@ -46,7 +46,7 @@ const LoginForm = () => {
   return (
     <>
     <div className='logo-home-container'>
-      <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
+      <NavLink className="Nav-logo-container" to="/">
             <h2><i className="fa-brands fa-yelp"></i> Brew</h2>
           </NavLink>
     </div>

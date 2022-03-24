@@ -12,8 +12,8 @@ const ProfileNav = () => {
                 <nav className="profile-nav">
                     <div className="profile-links-name-div">{user?.first_name}'s Profile</div>
                     <NavLink className='profile-reviews-link' to={'/profiles/reviews'}><FaStar /> My Reviews</NavLink>
-                    <NavLink className='profile-nav-link' to={'/profiles/images'}><i class="fa-solid fa-camera"></i> My Images</NavLink>
-                    <NavLink className='profile-nav-link' to={'/profiles/brews'}><i class="fa-solid fa-beer-mug-empty"></i> My Brews</NavLink>
+                    <NavLink className='profile-nav-link' to={'/profiles/images'}><i className="fa-solid fa-camera"></i> My Images</NavLink>
+                    <NavLink className='profile-nav-link' to={'/profiles/brews'}><i className="fa-solid fa-beer-mug-empty"></i> My Brews</NavLink>
                 </nav>
             </div>
      )

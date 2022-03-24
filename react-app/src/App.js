@@ -13,14 +13,12 @@ import ProfilePage from './components/Profile';
 import PageNotFound from './components/NotFound';
 import BreweryPage from './components/BreweryPage';
 import BreweryHostForm from './components/BreweryHostForm';
-import ReviewForm from './components/ReviewForm';
-import AboutMenu from './components/Footer';
 import Footer from './components/Footer';
 import ImageAll from './components/ImageAllPage';
 import Search from './components/SearchBar/Search';
 import ProfileMyBrews from './components/ProfileMyBrews';
 import ProfileMyReviews from './components/ProfileMyReviews';
-import ProfileMyImages from './components/MyImages';
+import ProfileMyImages from './components/ProfileMyImages';
 
 
 function App() {
@@ -56,7 +54,7 @@ function App() {
         <Route path='/login'>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path='/sign-up' >
           <SignUpForm />
         </Route>
         <Route path='/brews/new'>
@@ -77,17 +75,13 @@ function App() {
         <Route path='/profiles/images' >
           <ProfileMyImages />
         </Route>
-        <Route path='/profiles' >
-          <ProfilePage />
-        </Route>
-        <Route path='/' exact={true} >
+        <Route exact path='/' >
           <HomePage />
         </Route>
         <Route path='/search'>
           <Search />
         </Route>
         <Route>
-          <h2>hello from page not found</h2>
           <PageNotFound />
         </Route>
       </Switch>

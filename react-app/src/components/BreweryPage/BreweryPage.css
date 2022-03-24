@@ -1,5 +1,5 @@
 .brewery-page-div {
-    margin-top: 73px;
+    /* margin-top: 40px; */
 }
 
 #carousel {
@@ -116,6 +116,8 @@ input[type="radio"] {
 
 .review-edit-delete > button {
      margin-right: 5px;
+     padding: 10px;
+     margin-bottom: 3px;
 }
 
 .review-photo-div {

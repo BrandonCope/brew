@@ -6,10 +6,10 @@ import ReviewEditForm from './ReviewEditForm';
 export const ReviewEditModalContext = createContext();
 export const useReviewEditModal = () => useContext(ReviewEditModalContext)
 
-function ReviewEditFormModal({brew, review}) {
+function ReviewEditFormModal({review}) {
   const [showModal, setShowModal] = useState(false);
-    console.log(brew)
-    console.log(review)
+
+   
   return (
     <ReviewEditModalContext.Provider
       value={{
@@ -20,7 +20,7 @@ function ReviewEditFormModal({brew, review}) {
       <button className='reviewFormButton' onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <ReviewEditForm brew={brew} review={review} />
+            <ReviewEditForm review={review} />
         </Modal>
       )}
     </ReviewEditModalContext.Provider>

@@ -1,10 +1,9 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { NavLink, useHistory, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import './BreweryPage.css'
-import BreweryEditForm from "../BreweryEditForm"
 import BreweryEditFormModal from "../BreweryEditForm"
-import { deleteBrewery } from "../../store/brews"
+import { deleteBrewery, getBrews } from "../../store/brews"
 import ReviewFormModal from "../ReviewForm"
 import { deleteReview } from "../../store/reviews"
 import ReviewEditFormModal from "../ReviewEditForm"
@@ -14,6 +13,12 @@ import { FaStar } from 'react-icons/fa'
 const BreweryPage = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getBrews())
+
+    }, [dispatch])
+
     const history = useHistory()
     const user = useSelector((state) => state.session.user)
     const brews = useSelector((state) => state.breweries)
@@ -25,12 +30,11 @@ const BreweryPage = () => {
     const reviews = useSelector((state) => state.reviews)
     const reviewArr = Object.values(reviews).reverse()
     const filterReviewArr = reviewArr.filter((review) => review?.brewery_id === +id)
-    console.log(filterReviewArr)
-
+    const rateArr = filterReviewArr.map((review) => review?.rating)
     const avgRate = (arr) => {
         let num = 0
         arr.forEach(element => {
-          num += element
+            num += element
         });
         if (num) {
             return Math.round(num/arr.length)
@@ -38,12 +42,10 @@ const BreweryPage = () => {
             return 0
         }
     }
+    // brewAvg must stay after avgRate
+    const brewAvg = avgRate(rateArr)
 
-    const numOfRevs = (arr) => {
-        let num = 0
-        arr.forEach(rev => num += 1)
-        return num
-    }
+
 
 
     return (
@@ -64,10 +66,10 @@ const BreweryPage = () => {
                                         {[...Array(5)].map((star, i) => {
                                             const rateVal = i + 1;
                                             return (
-                                                <div >
+                                                <div key={rateVal} >
                                                     <FaStar
                                                     className="star-view"
-                                                    color={rateVal <= avgRate(brew.rating) ? "ffc107" : "e4e5e9"}
+                                                    color={rateVal <= brewAvg ? "ffc107" : "e4e5e9"}
                                                     size={40}
                                                     />
                                                 </div>
@@ -87,7 +89,7 @@ const BreweryPage = () => {
                             <BreweryEditFormModal brew={brew} />
                             <button className="reviewFormButton" onClick={(e) => {
                                 dispatch(deleteBrewery(brew.id))
-                                history.push(`/profiles/${user?.id}`)
+                                history.push(`/profiles/reviews`)
                                 }}>Delete Page</button>
                         </div> : <><ReviewFormModal brew={brew} /></>}
                         <ImageFormModal brew={brew} />
@@ -98,7 +100,7 @@ const BreweryPage = () => {
                         <h3>Recommended Reviews</h3>
                         <div>
                             {filterReviewArr.map((review) => (
-                                <div className="review-box">
+                                <div key={review.id} className="review-box">
                                     <div className="brew-review-container-top">
                                     <h3>{review.first_name} {review.last_name.slice(0,1)}.</h3>
                                     {review.user_id === user?.id ? <div className="review-edit-delete">
@@ -114,7 +116,7 @@ const BreweryPage = () => {
                                         {[...Array(5)].map((star, i) => {
                                             const rateVal = i + 1;
                                             return (
-                                                <div >
+                                                <div key={rateVal} >
                                                     <FaStar
                                                     className="star-view"
                                                     color={rateVal <= review.rating ? "ffc107" : "e4e5e9"}

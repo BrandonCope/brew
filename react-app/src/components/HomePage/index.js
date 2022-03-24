@@ -1,15 +1,22 @@
-import React from "react"
-import { useSelector } from "react-redux"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { FaStar } from 'react-icons/fa'
 import './HomePage.css'
+import { getBrews } from "../../store/brews"
 
 const HomePage = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getBrews())
+    }, [dispatch])
 
     const user = useSelector((state) => state.session.user)
     const brews = useSelector((state) => state.breweries)
     const brewArr = Object.values(brews)
     const filterBrewArr = brewArr.filter((brew) => brew?.host_id !== +user?.id)
+
 
 
       const avgRate = (arr) => {
@@ -33,7 +40,7 @@ const HomePage = () => {
     return (
         <>
         <div className="home-image-container">
-           <img alt="main page background" id="home-image" src="https://brew-aa.s3.amazonaws.com/43f50e81ce134ce9883d3719d9671205.jpg" />
+           <img alt="main-page-background" id="home-image" src="https://brew-aa.s3.amazonaws.com/43f50e81ce134ce9883d3719d9671205.jpg" />
         </div>
 
         <div className="home-body-div">
@@ -43,7 +50,8 @@ const HomePage = () => {
                    <div className="brew-snippet-box" key={brew.id}>
                        <NavLink className='brew-snippet-link' to={`/brews/${brew.id}`} >
                            <div className="brew-snippet-image-background">
-                               <img className="brew-snippet-box-img" src={brew.images[0]?.url} onError="../../../images/Biggest-Craft-Beer-Releases-of-2017_fb.jpg" />
+                               {/* <SnippetImage brew={brew} /> */}
+                               {brew.images[0]?.url ? <img alt="snippet-pic" className="brew-snippet-box-img" src={brew.images[0]?.url}/> : <img alt="snippet-pic" className="brew-snippet-box-img" src="https://brew-aa.s3.amazonaws.com/4a76aee20e574a118a5404dda9abad8f.png" />}
                            </div>
                        <div className="brew-snippet-lower">
                            <div>
@@ -54,7 +62,7 @@ const HomePage = () => {
                                         {[...Array(5)].map((star, i) => {
                                             const rateVal = i + 1;
                                             return (
-                                                <div >
+                                                <div key={rateVal}>
                                                     <FaStar
                                                     className="star-view"
                                                     color={rateVal <= avgRate(brew.rating) ? "ffc107" : "e4e5e9"}

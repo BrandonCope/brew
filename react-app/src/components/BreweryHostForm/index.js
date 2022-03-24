@@ -177,7 +177,7 @@ const BreweryHostForm = () => {
       <div className='zip-state'>
         <select  className='host-select' onChange={updateState}>
           {states.map((state) => (
-            <option value={state}>{state}</option>
+            <option key={state} value={state}>{state}</option>
           ))}
         </select>
       <div>

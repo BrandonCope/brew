@@ -18,14 +18,14 @@ const SignUpForm = () => {
 
   useEffect(() => {
     let errors = []
-    if (username.length >= 40) {
-        errors.push('Username: Max length of 40 characters reached.')
+    if (username.length >= 20) {
+        errors.push('Username: Max length of 20 characters reached.')
     }
-    if (first_name.length >= 40) {
-        errors.push('First Name: Max length of 40 characters reached.')
+    if (first_name.length >= 15) {
+        errors.push('First Name: Max length of 15 characters reached.')
     }
-    if (last_name.length >= 40) {
-        errors.push('Last Name: Max length of 40 characters reached.')
+    if (last_name.length >= 15) {
+        errors.push('Last Name: Max length of 15 characters reached.')
     }
     if (email.length >= 255) {
         errors.push(['Email: Max length of 255 characters reached.'])
@@ -79,7 +79,7 @@ const SignUpForm = () => {
   return (
     <>
     <div className='logo-home-container'>
-      <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
+      <NavLink className="Nav-logo-container" to="/" >
             <h2><i className="fa-brands fa-yelp"></i> Brew</h2>
           </NavLink>
     </div>
@@ -98,6 +98,7 @@ const SignUpForm = () => {
           className='login-input'
           placeholder='User Name'
           type='text'
+          maxLength={20}
           name='username'
           onChange={updateUsername}
           value={username}
@@ -121,6 +122,7 @@ const SignUpForm = () => {
         placeholder='First Name'
           type='text'
           name='first_name'
+          maxLength={15}
           onChange={updateFirstName}
           value={first_name}
         ></input>
@@ -132,6 +134,7 @@ const SignUpForm = () => {
         placeholder='Last Name'
           type='text'
           name='last_name'
+          maxLength={15}
           onChange={updateLastName}
           value={last_name}
         ></input>

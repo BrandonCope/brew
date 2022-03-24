@@ -70,3 +70,9 @@
     cursor: pointer;
     width: 200px;
 }
+
+.close-modal-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}

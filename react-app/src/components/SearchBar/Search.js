@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa'
 import './Search.css'
+import { getBrews } from '../../store/brews';
 
 const Search = () => {
     const location = useLocation()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getBrews())
+    }, [dispatch])
 
     const brews = useSelector((state) => state.breweries)
     const brewsArr = Object.values(brews)
@@ -39,11 +45,11 @@ const Search = () => {
     return (
         <div className='search-result-div'>
             {searchArr.length ? searchArr?.map(({name, images, rating, city, state, id}) => (
-                    <div className='brew-snippet-box'>
+                    <div key={id} className='brew-snippet-box'>
                 <Link className='brew-snippet-link' to={`brews/${id}`} key={id} >
                                   <div className="search-brew-snippet-image-background">
                                {/* <p className="default-background">Brew</p> */}
-                               <img className="brew-snippet-box-img" src={images[0]?.url} onError="../../../images/Biggest-Craft-Beer-Releases-of-2017_fb.jpg" />
+                               {images[0]?.url ? <img alt="snippet-pic" className="brew-snippet-box-img" src={images[0]?.url}/> : <img alt="snippet-pic" className="brew-snippet-box-img" src="https://brew-aa.s3.amazonaws.com/4a76aee20e574a118a5404dda9abad8f.png" />}
                            </div>
                        <div className="brew-snippet-lower">
                            <div>
@@ -54,7 +60,7 @@ const Search = () => {
                                         {[...Array(5)].map((star, i) => {
                                             const rateVal = i + 1;
                                             return (
-                                                <div >
+                                                <div key={rateVal} >
                                                     <FaStar
                                                     className="star-view"
                                                     color={rateVal <= avgRate(rating) ? "ffc107" : "e4e5e9"}

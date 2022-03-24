@@ -14,34 +14,16 @@ const ProfileMyReviews = () => {
     const filterReviewArr = reviewArr.filter((review) => review?.user_id === +user?.id)
 
 
-    const avgRate = (arr) => {
-        let num = 0
-        arr.forEach(element => {
-          num += element
-        });
-        if (num) {
-            return Math.round(num/arr.length)
-        } else {
-            return 0
-        }
-    }
-
-    const numOfRevs = (arr) => {
-        let num = 0
-        arr.forEach(rev => num += 1)
-        return num
-    }
-
     return (
         <>
            <h1 className="profile-name-title">{user?.first_name} {user?.last_name.slice(0,1)}.</h1>
          <div className="profile-body-div">
                    <ProfileNav />
-           <div className="brew-snippet-list-container">
+           <div className="my-review-snippet-container">
                <h2>My Reviews</h2>
-               {filterReviewArr ? <div>
+               {filterReviewArr.length ? <div>
                 {filterReviewArr.map((review) => (
-                                <div className="review-box">
+                                <div key={review.id} className="review-box">
                                     <div className="brew-review-container-top">
                                     <h3>{review.brew_name}</h3>
                                     <p>{review.created_at.slice(0,17)}</p>
@@ -58,7 +40,7 @@ const ProfileMyReviews = () => {
                                         {[...Array(5)].map((star, i) => {
                                             const rateVal = i + 1;
                                             return (
-                                                <div >
+                                                <div key={rateVal} >
                                                     <FaStar
                                                     className="star-view"
                                                     color={rateVal <= review.rating ? "ffc107" : "e4e5e9"}

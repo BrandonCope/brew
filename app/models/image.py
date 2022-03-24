@@ -22,5 +22,6 @@ class Image(db.Model):
             'user_id': self.user_id,
             'brewery_id': self.brewery_id,
             'first_name': self.user.first_name,
-            'last_name': self.user.last_name
+            'last_name': self.user.last_name,
+            'brew_name': self.breweries.name
         }

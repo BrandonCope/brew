@@ -1,135 +1,58 @@
-# Flask React Project
+# Brew AA Capstone
 
-This is the starter for the Flask React project.
+Brew, a [Yelp](https://www.yelp.com/) clone, is a business review and social networking platform that that helps users in their search for new craft beers, gives them a way to review their experience/favorite beverages, and gives the breweries a method of attracting new customers.
 
-## Getting started
+# Brew
 
-1. Clone this repository (only this branch)
+Promote your brewery or leave a review now on [Brew](https://brew-aa-capstone.herokuapp.com/)!
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+## [Feature List](https://github.com/BrandonCope/brew/wiki/MVP-Feature-List)
 
-2. Install dependencies
+List of features needed for the Minimum Viable Product (MVP) and its CRUD features
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+## [User Stories](https://github.com/BrandonCope/brew/wiki/User-Stories)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+List of user stories for each MVP
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+## [Database Schema](https://github.com/BrandonCope/brew/wiki/Database-Schema)
 
-   ```bash
-   pipenv shell
-   ```
+Schema of how PostgreSQL database will be set up
 
-   ```bash
-   flask db upgrade
-   ```
+## [Wireframe](https://github.com/BrandonCope/brew/wiki/Wireframe)
 
-   ```bash
-   flask seed all
-   ```
+Wireframe of how pages will layout.
 
-   ```bash
-   flask run
-   ```
+## [API Documentation](https://github.com/BrandonCope/brew/wiki/API-Documentation)
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+API routes that will be used by the backend server
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+## [Frontend Routes](https://github.com/BrandonCope/brew/wiki/Frontend-Routes)
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+Frontend Routes that the client can access while interacting with Brew app
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+## [Redux State Shape](https://github.com/BrandonCope/Brew/wiki/Redux-State-Shape)
 
-## Deploy to Heroku
+Brew's redux state shape for react frontend
 
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+**Features**
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
+ - Create/ delete/ edit breweries
+ - Add/ edit/ delete reviews of breweries
+ - Add/ delete photos of breweries
+ - See lists of your reviews, photos, and breweries you are promoting on User Profile
+ - Can search for a brewery by name
 
-   ```bash
-   heroku login
-   ```
+**Possible Features**
 
-6. Login to the heroku container registry
+ - Reservations
+ - Directions with google maps
 
-   ```bash
-   heroku container:login
-   ```
+**Technologies Used**
 
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
-
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-# brew
+ - React.js
+ - Python
+ - Flask
+ - Heroku
+ - Docker
+ - PostgreSQL
