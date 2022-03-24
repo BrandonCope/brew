@@ -16,7 +16,7 @@ function ReviewEditForm({ brew, review }) {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user)
     const reviewId = review.id
-    console.log(review.id)
+
 
     useEffect(() => {
         let errors = []
@@ -32,6 +32,11 @@ function ReviewEditForm({ brew, review }) {
         setRating("");
     }
 
+    const cancelClick = (e) => {
+        e.preventDefault()
+        setShowModal(false)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (user) {
@@ -40,7 +45,7 @@ function ReviewEditForm({ brew, review }) {
                 content,
                 rating,
                 user_id: user?.id,
-                brewery_id: brew?.id,
+                brewery_id: review?.brewery_id,
             }
             const data = await dispatch(editReview(new_review, reviewId));
             if (data.errors) {
@@ -56,7 +61,7 @@ function ReviewEditForm({ brew, review }) {
 
     return (
         <div className='review-create-container'>
-        <h3>{brew.name}</h3>
+        <h3>{review.brew_name}</h3>
  <form onSubmit={handleSubmit}>
      <div>
          {errors && errors.map((error, ind) => (
@@ -69,7 +74,7 @@ function ReviewEditForm({ brew, review }) {
              {[...Array(5)].map((star, i) => {
                  const rateVal = i + 1;
                  return (
-                     <label>
+                     <label key={rateVal}>
 
                          <input
                          type="radio"
@@ -110,6 +115,7 @@ function ReviewEditForm({ brew, review }) {
 
      </div>
  </form>
+ <div className='close-modal-button'><button onClick={cancelClick} className='add-photo-button'><i className="fa-solid fa-xmark"></i></button></div>
 </div>
     )
 

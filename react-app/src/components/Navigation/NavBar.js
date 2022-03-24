@@ -34,12 +34,12 @@ const NavBar = ({ loginForm, setLoginForm }) => {
     sessionLinks = (
       <>
        <li>
-          <NavLink className='session-links' to='/login' exact={true} activeClassName='active'>
+          <NavLink className='session-links' to='/login' exact={true} >
             Login
           </NavLink>
         </li>
         <li>
-          <NavLink className='session-links' to='/sign-up' exact={true} activeClassName='active'>
+          <NavLink className='session-links' to='/sign-up' exact={true} >
             Sign Up
           </NavLink>
         </li>
@@ -52,8 +52,8 @@ const NavBar = ({ loginForm, setLoginForm }) => {
   return (
     <div className='nav-body-div'>
     <nav className='nav-container'>
-          <NavLink className="Nav-logo-container" to="/" activeClassName='active'>
-              <h2><i class="fa-brands fa-yelp"></i> Brew</h2>
+          <NavLink className="Nav-logo-container" to="/" >
+              <h2 className='logo-title'><i className="fa-brands fa-yelp"></i><div className='brew-logo'>Brew</div></h2>
           </NavLink>
         <div>
           <SearchBar />

@@ -1,7 +1,45 @@
 /* TODO Add site wide styles */
-html,body,#root {
-    width: auto;
+html,body {
+    width: 100%;
     height: 100%;
     margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
     font-family: sans-serif;
 }
+
+#root {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px white;
+    border-radius: 10px;
+    margin-block: .5em;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #c41200;
+    border-radius: 10px;
+  }
+
+  /* @media screen and (max-width: 640px)
+{
+    body, html{
+        width: 100vw;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        padding: 0.8em 0;
+        position: relative;
+    }
+} */

@@ -1,16 +1,16 @@
 import React, { useState, createContext, useContext } from 'react';
 import { Modal } from '../../context/Modal';
-import ImageDetail from './ImageDetail';
-import './ImageDetail.css'
+import ImageProfileDetail from './ImageProfileDetail';
+// import './ImageDetail.css'
 
-export const ImageModalContext = createContext();
-export const useImageDetailModal = () => useContext(ImageModalContext)
+export const ImageProfileModalContext = createContext();
+export const useImageDetailProfileModal = () => useContext(ImageProfileModalContext)
 
-function ImageDetailModal({image}) {
+function ImageDetailProfileModal({image}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <ImageModalContext.Provider
+    <ImageProfileModalContext.Provider
       value={{
         showModal,
         setShowModal
@@ -19,11 +19,11 @@ function ImageDetailModal({image}) {
       <button className="image-button" onClick={() => setShowModal(true)}><img alt='matrix-modal-pic' className='image-all' src={image.image} /></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-         <ImageDetail image={image} />
+         <ImageProfileDetail image={image} />
         </Modal>
       )}
-    </ImageModalContext.Provider>
+    </ImageProfileModalContext.Provider>
   );
 }
 
-export default ImageDetailModal;
+export default ImageDetailProfileModal;

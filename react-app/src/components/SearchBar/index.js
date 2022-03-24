@@ -1,9 +1,13 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 
+
 const SearchBar = () => {
     const [searchValue, setSearchValue] = useState('')
     const history = useHistory()
+
+
+
 
     const handleSearch = (e) => {
         e.preventDefault()

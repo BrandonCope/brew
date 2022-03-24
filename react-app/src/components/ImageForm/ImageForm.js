@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useImageModal } from '.';
+
 import { createImage } from '../../store/images';
 import './ImageForm.css'
 
@@ -16,16 +17,20 @@ function ImageForm({ brew }) {
 
     const updateImage = (e) => {
         const file = e.target.files[0];
-        console.log(e.target.files)
-        console.log(file)
+
         setURL(file);
     }
-    console.log(url)
+
 
     useEffect(() => {
         let errors = []
         setErrors(errors)
     }, [])
+
+    const cancelClick = (e) => {
+        e.preventDefault()
+        setShowModal(false)
+    }
 
 
     const handleSubmit = async (e) => {
@@ -34,20 +39,12 @@ function ImageForm({ brew }) {
         if (user) {
         const formData = new FormData()
         formData.append("image", url)
-        console.log(formData.image)
+
         formData.append("user_id", user?.id)
         formData.append("brewery_id", brew?.id)
 
-        //     const formData = {
-        //         url,
-        //         user_id: user?.id,
-        //         brewery_id: brew?.id,
-        //     }
-        //     }
-        console.log(formData)
-
         const data = await dispatch(createImage(formData));
-        console.log(data)
+
             if (data.errors) {
                 setErrors(data.errors);
             } else {
@@ -66,7 +63,6 @@ function ImageForm({ brew }) {
                     {errors && errors.map((error, ind) => (
                         <div className='error-div' key={ind}>{error}</div>
                     ))}
-                        {/* <img src={url?.name}></img> */}
                 </div>
                     <label>
                     </label>
@@ -77,18 +73,9 @@ function ImageForm({ brew }) {
                     name="image"
                     onChange={updateImage}
                     />
-                    {/* <input
-                        className='review-form-textarea'
-                        value={url}
-                        onChange={(e) => setURL(e.target.value)}
-                        rows="2"
-                        column="15"
-                        placeholder='Paste Image URL...'
-                        maxLength="255"
-                    >
-                    </input> */}
-                    <button className='review-post-button'>POST</button>
+                <button className='review-post-button'>POST</button>
             </form>
+            <div className='close-modal-button'><button onClick={cancelClick} className='add-photo-button'><i className="fa-solid fa-xmark"></i></button></div>
         </div>
     )
 

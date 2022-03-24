@@ -15,11 +15,18 @@ const BreweryEditForm = ({brew}) => {
     const [phone, setPhone] = useState(`${brew.phone}`);
     const [email, setEmail] = useState(`${brew.email}`);
     const {setShowModal} = useEditModal();
+
     const user = useSelector(state => state.session.user);
-    const id = user?.id
     const brewId = brew?.id
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const states = [
+      "State", "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",
+      "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA",
+      "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE",
+      "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",
+      "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
 
     useEffect(() => {
         let errors = []
@@ -32,20 +39,20 @@ const BreweryEditForm = ({brew}) => {
         if (city.length >= 40) {
             errors.push('City: Max length of 40 characters reached.')
         }
-        if (state.length > 2) {
-            errors.push('State: Max length of 2 characters reached.')
-        }
+        // if (state.length > 2) {
+        //     errors.push('State: Max length of 2 characters reached.')
+        // }
         if (zip_code.length > 5) {
             errors.push('ZIP code: Max length of 5 characters reached.')
         }
-        if (phone.length > 13) {
+        if (phone.length > 14) {
             errors.push('Phone: Max length of 13 characters reached.')
         }
         if (email.length >= 255) {
             errors.push(['Email: Max length of 255 characters reached.'])
         }
         setErrors(errors)
-    }, [name, email, address, city, state, zip_code, phone])
+    }, [name, email, address, city, zip_code, phone])
 
 
     const handleSubmit = async e => {
@@ -73,6 +80,10 @@ const BreweryEditForm = ({brew}) => {
 
 
     }
+    const cancelClick = (e) => {
+      e.preventDefault()
+      setShowModal(false)
+  }
 
       const updateName = (e) => {
         setName(e.target.value);
@@ -92,26 +103,42 @@ const BreweryEditForm = ({brew}) => {
         const updateZipCode = (e) => {
             setZipCode(e.target.value);
         };
+        const handlePhoneNumber = (e) => {
+          const formattedNumber = formatNumber(e.target.value);
+          setPhone(formattedNumber)
+        }
         const updatePhone = (e) => {
-          setPhone(e.target.value);
+          handlePhoneNumber(e);
         };
+        const formatNumber = (value) => {
+          if (!value) return value;
+          const number = value.replace(/[^\d]/g,"")
+          const numberLength = number.length
+          if (numberLength < 4) return number;
+          if (numberLength < 7) {
+            return `(${number.slice(0,3)}) ${number.slice(3)}`;
+          }
+          return `(${number.slice(0,3)}) ${number.slice(3,6)}-${number.slice(6,10)}`
+        }
         const updateEmail = (e) => {
           setEmail(e.target.value);
         };
 
 
     return (
-        <div className="brew-edit-form-body-div">
-      <h1 className="app-title">Edit Your Details</h1>
+      <div className='edit-host-body'>
+          <div className='edit-host-page'>
+            <div className='edit-host-form-container'>
+      <h1 className="app-title">Host a Brewery</h1>
       <div>
         {errors.map((error, ind) => (
           <div className='error-div' key={ind}>{error}</div>
-        ))}
+          ))}
       </div>
-    <form className='brew-edit-form' onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <input
-        className='input-field'
+        className='host-input'
           placeholder='Brewery Name'
           type='text'
           name='name'
@@ -123,7 +150,7 @@ const BreweryEditForm = ({brew}) => {
       <div>
 
         <input
-        className='input-field'
+        className='host-input'
         placeholder='Address'
           type='text'
           name='address'
@@ -134,7 +161,7 @@ const BreweryEditForm = ({brew}) => {
       <div>
 
         <input
-        className='input-field'
+        className='host-input'
         placeholder='City'
           type='text'
           name='city'
@@ -144,21 +171,15 @@ const BreweryEditForm = ({brew}) => {
         ></input>
       </div>
       <div>
-
-        <input
-        className='input-field'
-          placeholder='State Abbreviation: XX'
-          type='state'
-          name='state'
-          maxLength={2}
-          onChange={updateState}
-          value={state}
-        ></input>
-      </div>
+      <div className='zip-state'>
+        <select value={state}  className='host-select' onChange={updateState}>
+          {states.map((state) => (
+            <option key={state} value={state}>{state}</option>
+            ))}
+        </select>
       <div>
-
         <input
-        className='input-field'
+        className='host-zip-input'
           placeholder='ZIP code: XXXXX'
           type='state'
           name='repeat_state'
@@ -167,20 +188,22 @@ const BreweryEditForm = ({brew}) => {
           maxLength={5}
         ></input>
       </div>
+      </div>
+      </div>
       <div>
         <input
-        className='input-field'
+        className='host-input'
         placeholder='Phone: (XXX)XXX-XXXX'
           type='text'
           name='phone'
           onChange={updatePhone}
           value={phone}
-          maxLength={13}
+          maxLength={14}
         ></input>
       </div>
       <div>
         <input
-        className='input-field'
+        className='host-input'
         placeholder='Email'
           type='text'
           name='email'
@@ -190,6 +213,10 @@ const BreweryEditForm = ({brew}) => {
       </div>
       <button className='login-form-button' type='submit'>Submit</button>
     </form>
+
+            </div>
+          </div>
+<div className='close-modal-button'><button onClick={cancelClick} className='add-photo-button'><i className="fa-solid fa-xmark"></i></button></div>
         </div>
     )
 }

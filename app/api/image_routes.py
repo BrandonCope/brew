@@ -14,7 +14,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field.capitalize()} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -35,7 +35,7 @@ def post_images():
     image = request.files["image"]
 
     if not allowed_file(image.filename):
-        return {"errors": ["Error: file type not permitted"]}, 400
+        return {"errors": ["Error: file type not permitted, must be png, jpg, jpeg"]}, 400
 
     image.filename = get_unique_filename(image.filename)
 

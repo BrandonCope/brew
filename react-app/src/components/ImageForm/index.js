@@ -17,7 +17,7 @@ function ImageFormModal({brew}) {
         setShowModal
       }}
     >
-      <button className='add-photo-button' onClick={() => setShowModal(true)}><i class="fa-solid fa-camera"></i> Add Photo</button>
+      <button className='add-photo-button' onClick={() => setShowModal(true)}><i className="fa-solid fa-camera"></i> Add Photo</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
             <ImageForm brew={brew} />

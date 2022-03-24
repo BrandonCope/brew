@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
-function ProfileButton({ user }) {
+function ProfileButton() {
   const [showMenu, setShowMenu] = useState(false);
 
 
@@ -29,15 +29,14 @@ function ProfileButton({ user }) {
 
   return (
     <div className="profileContainer">
-      <button className="profileButton" onClick={openMenu}>
+      <button onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)} className="profileButton" onClick={openMenu}>
         <i className="fa-solid fa-user"></i>
       </button>
       {showMenu && (
 
-        <div className="profile-dropdown">
+        <div onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)} onClick={openMenu} className="profile-dropdown">
           <div className='loggedInUserNav'>
-            {/* <li className="profileItem">Hello, {user.username.slice(0, 10)}!</li> */}
-            <div className="profileItem" ><Link className="profileLink" to={`/profiles/${user.id}`}><i class="fa-regular fa-user"></i> My Profile</Link></div>
+            <div className="profileItem" ><Link className="profileLink" to={`/profiles/reviews`}><i className="fa-regular fa-user"></i>My Profile</Link></div>
           </div>
             <div className=""><LogoutButton /></div>
         </div>

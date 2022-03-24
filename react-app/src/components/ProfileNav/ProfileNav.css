@@ -1,0 +1,37 @@
+.profile-nav {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.profile-nav a {
+    border: 0;
+    background-color: transparent;
+    border-bottom: #c41200 2px solid;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 160px;
+    text-decoration: none;
+    color: inherit;
+    margin-left: 15px;
+    padding: 10px;
+    padding-left: 10px;
+
+}
+
+.profile-nav a:hover {
+ background-color: rgb(175, 175, 175);
+}
+
+.profile-nav a.active {
+ background-color: rgb(175, 175, 175);
+ border-left: #c41200 2px solid;
+}
+
+
+.profile-links-name-div {
+    border-bottom: #c41200 2px solid;
+    width: 180px;
+    margin-left: 15px;
+    font-weight: bolder;
+}

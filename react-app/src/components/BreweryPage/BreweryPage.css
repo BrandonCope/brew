@@ -1,5 +1,5 @@
 .brewery-page-div {
-    /* margin-top: 73px; */
+    /* margin-top: 40px; */
 }
 
 #carousel {
@@ -37,6 +37,7 @@ justify-content: space-evenly;
     display: flex;
     justify-content: flex-start;
     width: 500px;
+
 }
 
 .brew-page-title {
@@ -64,11 +65,13 @@ input[type="radio"] {
 
 .brew-review-container {
     width: 500px;
+    margin-bottom: 50px;
 }
 
 .brew-review-container-top {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .brew-review-container-top > h3 {
@@ -113,6 +116,8 @@ input[type="radio"] {
 
 .review-edit-delete > button {
      margin-right: 5px;
+     padding: 10px;
+     margin-bottom: 3px;
 }
 
 .review-photo-div {
@@ -125,4 +130,43 @@ input[type="radio"] {
 .review-photo-div > button {
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.review-box {
+    border-top: #c41200 2px solid;
+}
+
+@media screen and (max-width: 750px)
+{
+    .brewery-detail-body-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .contact-info-div {
+        display: flex;
+        /* flex-direction: row; */
+    }
+
+    .brew-review-container {
+        width: 500px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 400px)
+{
+    .brewery-detail-body-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        /* box-sizing: border-box; */
+    }
+    .contact-info-div {
+        display: flex;
+        font-size: medium;
+    }
 }

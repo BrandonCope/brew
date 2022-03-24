@@ -3,12 +3,13 @@
     display: flex;
     position: fixed;
     bottom: 0;
-    background-color: transparent;
+    background-color: white;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding-right: 50px;
+    /* margin-top: 100px; */
 
   }
 
@@ -24,12 +25,6 @@
     font-size: large;
   }
 
-  .about-menu-open {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-  }
   .about-li {
     padding: 0 10px;
   }

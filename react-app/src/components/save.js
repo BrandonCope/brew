@@ -1,22 +1,15 @@
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React from "react"
+import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { FaStar } from 'react-icons/fa'
 import './HomePage.css'
-import { getBrews } from "../../store/brews"
 
 const HomePage = () => {
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getBrews())
-    }, [dispatch])
 
     const user = useSelector((state) => state.session.user)
     const brews = useSelector((state) => state.breweries)
     const brewArr = Object.values(brews)
     const filterBrewArr = brewArr.filter((brew) => brew?.host_id !== +user?.id)
-
 
 
       const avgRate = (arr) => {
@@ -50,8 +43,7 @@ const HomePage = () => {
                    <div className="brew-snippet-box" key={brew.id}>
                        <NavLink className='brew-snippet-link' to={`/brews/${brew.id}`} >
                            <div className="brew-snippet-image-background">
-                               {/* <SnippetImage brew={brew} /> */}
-                               {brew.images[0]?.url ? <img alt="snippet-pic" className="brew-snippet-box-img" src={brew.images[0]?.url}/> : <img alt="snippet-pic" className="brew-snippet-box-img" src="https://brew-aa.s3.amazonaws.com/4a76aee20e574a118a5404dda9abad8f.png" />}
+                               <img alt="snippet-pic" className="brew-snippet-box-img" src={brew.images[0]?.url}/>
                            </div>
                        <div className="brew-snippet-lower">
                            <div>

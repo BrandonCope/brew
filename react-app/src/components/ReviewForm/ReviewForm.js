@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useReviewModal } from '.'
-import { createReview, editReview } from '../../store/reviews'
+import { createReview } from '../../store/reviews'
 import { FaStar } from 'react-icons/fa'
 import './ReviewForm.css'
+import { getBrews } from '../../store/brews'
 
 
 function ReviewForm({ brew }) {
@@ -17,20 +18,26 @@ function ReviewForm({ brew }) {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user)
 
-    // console.log(rating)
+
 
     useEffect(() => {
+        dispatch(getBrews())
         let errors = []
         if (content.length >= 2000) {
             setErrors(['Max length of 2000 characters reached.'])
         } else {
             setErrors(errors)
         }
-    }, [content])
+    }, [content, dispatch])
 
     const reset = () => {
         setContent("");
         setRating("");
+    }
+
+    const cancelClick = (e) => {
+        e.preventDefault()
+        setShowModal(false)
     }
 
     const handleSubmit = async (e) => {
@@ -70,7 +77,7 @@ function ReviewForm({ brew }) {
                         {[...Array(5)].map((star, i) => {
                             const rateVal = i + 1;
                             return (
-                                <label>
+                                <label key={rateVal}>
 
                                     <input
                                     type="radio"
@@ -111,6 +118,7 @@ function ReviewForm({ brew }) {
 
                 </div>
             </form>
+            <div className='close-modal-button'><button onClick={cancelClick} className='add-photo-button'><i className="fa-solid fa-xmark"></i></button></div>
         </div>
     )
 
