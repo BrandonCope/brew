@@ -1,6 +1,6 @@
 import React from "react"
 import { useParams } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import ReviewEditFormModal from "../ReviewEditForm"
 import { FaStar } from 'react-icons/fa'
 import DeleteFormModal from "../DeleteForm"
@@ -8,7 +8,6 @@ import DeleteFormModal from "../DeleteForm"
 
 const ReviewList = ({brew}) => {
     const {id} = useParams()
-    const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user)
     const reviews = useSelector((state) => state.reviews)
     const reviewArr = Object.values(reviews).reverse()
