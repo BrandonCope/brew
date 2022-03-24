@@ -1,0 +1,11 @@
+.delete-confirm-buttons-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.delete-confirm-body {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    height: 100%;
+}

@@ -9,7 +9,6 @@ import { getBrews } from './store/brews.js';
 import { getImages } from './store/images.js'
 import { getReviews } from './store/reviews.js'
 import HomePage from './components/HomePage';
-import ProfilePage from './components/Profile';
 import PageNotFound from './components/NotFound';
 import BreweryPage from './components/BreweryPage';
 import BreweryHostForm from './components/BreweryHostForm';
