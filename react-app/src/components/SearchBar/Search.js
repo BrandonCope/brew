@@ -16,8 +16,8 @@ const Search = () => {
     const brews = useSelector((state) => state.breweries)
     const brewsArr = Object.values(brews)
 
-    const searchArr = brewsArr.filter(({name, images, rating, city, state, id}) => {
-        return name.toLowerCase().includes(location.state.detail.toLowerCase())
+    const searchArr = brewsArr?.filter(({name, images, rating, city, state, id}) => {
+        return name?.toLowerCase().includes(location.state?.detail.toLowerCase())
     })
 
     const avgRate = (arr) => {

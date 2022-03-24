@@ -9,6 +9,7 @@ import { deleteReview } from "../../store/reviews"
 import ReviewEditFormModal from "../ReviewEditForm"
 import ImageFormModal from "../ImageForm"
 import { FaStar } from 'react-icons/fa'
+import PageNotFound from "../NotFound"
 
 const BreweryPage = () => {
     const {id} = useParams()
@@ -50,7 +51,7 @@ const BreweryPage = () => {
 
     return (
         <div className="brewery-page-div">
-           {filterBrewArr?.map((brew) => (
+           {filterBrewArr.length ? filterBrewArr?.map((brew) => (
                <div key={brew.id}>
                    <div id="carousel">
                          {filterImageArr.map((image) => (
@@ -155,7 +156,7 @@ const BreweryPage = () => {
                    </div>
                    </div>
                </div>
-           ))}
+           ))  : <PageNotFound />}
         </div>
     )
 }
