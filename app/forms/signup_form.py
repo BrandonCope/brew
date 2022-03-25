@@ -40,5 +40,5 @@ class SignUpForm(FlaskForm):
     email = StringField('email', validators=[DataRequired("Email field is required."), Email("Email must be a valid email"), user_exists])
     first_name = StringField('first_name', validators=[DataRequired("First Name field is required."), first_name_valid])
     last_name = StringField('last_name', validators=[DataRequired("Last Name field is required."), last_name_valid])
-    password = StringField('password', validators=[DataRequired("Password field is required"), Regexp("^(?=.*[A-Za-z])(?=.*)[A-Za-z\d]{8,}$",message="Password must contain at least 8 characters"), EqualTo('confirm_password',message ="Password and Confirm Password must match")])
+    password = StringField('password', validators=[DataRequired("Password field is required"), Regexp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$",message="Password requires minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"), EqualTo('confirm_password',message ="Password and Confirm Password must match")])
     confirm_password = StringField('password',validators=[DataRequired("Confirm Password field is required.")])
