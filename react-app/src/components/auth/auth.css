@@ -4,8 +4,13 @@
     justify-content: center;
 }
 
+.error-container {
+    width: 500px;
+}
 .error-div {
     color: red;
+    word-break: normal;
+
 }
 
 .signup-form-container {
