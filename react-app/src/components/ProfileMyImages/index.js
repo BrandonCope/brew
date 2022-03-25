@@ -23,7 +23,7 @@ const ProfileMyImages = () => {
          <div className="profile-body-div">
                    <ProfileNav />
            <div className="profile-brew-snippet-list-container">
-               <h2>My Images</h2>
+               <h2 className="my-profile-tab-title">My Images</h2>
                {filterImageArr.length ? <div className="image-matrix">
                    {filterImageArr.map((image) => (
                         <div key={image.id}>

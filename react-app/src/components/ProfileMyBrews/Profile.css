@@ -2,11 +2,9 @@
     margin-top: 50px;
     margin-bottom: 100px;
     display: flex;
-    /* justify-content: center; */
 }
 
 .profile-name-title {
-    /* margin-top: 100px; */
     display: flex;
     justify-content: center;
 }
@@ -37,12 +35,9 @@
     padding-bottom: 15px;
     padding-left: 150px;
     padding-right: 150px;
-    /* width: 950px; */
-    /* margin: 100px; */
     margin-left: 100px;
     margin-right: 100px;
     margin-bottom: 15px;
-    /* max-width: 1500px; */
 }
 
 .profile-brew-snippet-list-container > h2 {
@@ -67,7 +62,9 @@
 
 .my-review-snippet-container {
     display: flex;
+    flex-direction: column;
 flex-wrap: wrap;
+align-items: center;
 justify-content: space-evenly;
 padding-bottom: 15px;
 /* padding-left: 150px;
@@ -76,6 +73,16 @@ margin-bottom: 50px;
 
 margin-left: 50px;
 margin-right: 50px;
+}
+
+.my-review-container-placement {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.my-profile-tab-title {
+    padding-bottom: 15px;
 }
 
 @media screen and (max-width: 850px) {

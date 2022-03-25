@@ -44,7 +44,7 @@ const ProfileMyBrews = () => {
          <div className="profile-body-div">
                    <ProfileNav />
            <div className="profile-brew-snippet-list-container">
-               <h2>My Brews</h2>
+               <h2 className="my-profile-tab-title">My Brews</h2>
                <div className="profile-snippets">
                {filterBrewArr.length > 0 ? filterBrewArr?.map((brew) => (
                    <div className="profile-brew-snippet-box" key={brew.id}>
