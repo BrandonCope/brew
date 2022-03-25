@@ -21,6 +21,7 @@ const ProfileMyReviews = () => {
            <h1 className="profile-name-title">{user?.first_name} {user?.last_name.slice(0,1)}.</h1>
          <div className="profile-body-div">
                    <ProfileNav />
+                   <div className="my-review-container-placement">
            <div className="my-review-snippet-container">
                <h2>My Reviews</h2>
                {filterReviewArr.length ? <div>
@@ -63,6 +64,8 @@ const ProfileMyReviews = () => {
                    </div>
                    }
            </div>
+
+                   </div>
         </div>
         </>
     )
