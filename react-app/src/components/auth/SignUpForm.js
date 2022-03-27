@@ -88,9 +88,11 @@ const SignUpForm = () => {
     <div className='signup-form-container'>
       <h1 className="app-title">Sign up for Brew</h1>
       <div className='error-container'>
+        <div>
         {errors && errors.map((error, ind) => (
           <div className='error-div' key={ind}>{error}</div>
         ))}
+        </div>
       </div>
     <form onSubmit={onSignUp}>
       <div>
