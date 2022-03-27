@@ -22,9 +22,9 @@ def username_exists(form, field):
 def first_name_valid(form, field):
     first_name = form.data['first_name']
     if len(first_name) > 15:
-        raise ValidationError("First Name can not exceed 15 characters")
+        raise ValidationError("First Name can not exceed 15 characters.")
     if first_name.isdigit():
-        raise ValidationError("First Name can not contain ingtegers")
+        raise ValidationError("First Name can not contain ingtegers.")
 
 def last_name_valid(form, field):
     last_name = form.data['last_name']

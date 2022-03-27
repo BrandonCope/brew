@@ -5,12 +5,16 @@
 }
 
 .error-container {
-    width: 500px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 .error-div {
     color: red;
     word-break: normal;
-
+    margin-bottom: 5px;
 }
 
 .signup-form-container {

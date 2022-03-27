@@ -53,7 +53,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin: auto;
-    margin-top: 73px;
+    /* margin-top: 73px; */
 }
 
 .host-form-container > form {
