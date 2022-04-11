@@ -11,7 +11,7 @@ class Funny(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
 
     user = db.relationship("User", back_populates="funny")
-    review = db.relationship("Review", back_populates="funny")
+    reviews = db.relationship("Review", back_populates="funny")
 
     def to_dict(self):
         return {

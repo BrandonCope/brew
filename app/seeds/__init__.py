@@ -21,7 +21,7 @@ def seed():
     seed_reviews()
     seed_useful()
     seed_funny()
-    seed_cool
+    seed_cool()
     # Add other seed functions here
 
 
@@ -34,5 +34,5 @@ def undo():
     undo_reviews()
     undo_useful()
     undo_funny()
-    undo_cool
+    undo_cool()
     # Add other undo functions here
