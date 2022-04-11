@@ -43,7 +43,7 @@ const DeleteForm = ({review, image, brew}) => {
                     <button className='reviewFormButton' onClick={deleteElemenent}>Yes, Delete</button>
                     <button className='reviewFormButton' onClick={cancelClick}>Cancel</button>
           </div>
-<div className='close-modal-button'><button onClick={cancelClick} className='add-photo-button'><i className="fa-solid fa-xmark"></i></button></div>
+                <div className='close-modal-button'><button onClick={cancelClick} className='add-photo-button'><i className="fa-solid fa-xmark"></i></button></div>
         </div>
     )
 }

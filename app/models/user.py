@@ -18,6 +18,9 @@ class User(db.Model, UserMixin):
     breweries = db.relationship('Brewery', back_populates='user')
     images = db.relationship('Image', back_populates='user')
     reviews = db.relationship('Review', back_populates='user')
+    useful = db.relationship('Useful', back_populates='user')
+    funny = db.relationship('Funny', back_populates='user')
+    cool = db.relationship('Cool', back_populates='user')
 
 
 

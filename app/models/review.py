@@ -14,6 +14,9 @@ class Review(db.Model):
 
     user = db.relationship('User', back_populates='reviews')
     breweries = db.relationship('Brewery', back_populates='reviews')
+    useful = db.relationship('Useful', back_populates='reviews', cascade = "all, delete-orphan")
+    funny = db.relationship('Funny', back_populates='reviews', cascade = "all, delete-orphan")
+    cool = db.relationship('Cool', back_populates='reviews', cascade = "all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -26,5 +29,5 @@ class Review(db.Model):
             'brew_name': self.breweries.name,
             'username': self.user.username,
             'first_name': self.user.first_name,
-            'last_name': self.user.last_name
+            'last_name': self.user.last_name,
         }
