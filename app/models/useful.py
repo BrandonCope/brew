@@ -1,5 +1,6 @@
 from app.models.db import db
 from sqlalchemy import ForeignKey
+from flask import jsonify
 
 class Useful(db.Model):
     __tablename__='useful'

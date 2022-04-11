@@ -11,6 +11,9 @@ from .api.auth_routes import auth_routes
 from .api.brewery_routes import brewery_routes
 from .api.image_routes import image_routes
 from .api.review_routes import review_routes
+from .api.useful_routes import useful_routes
+from .api.funny_routes import funny_routes
+from .api.cool_routes import cool_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +40,9 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(brewery_routes, url_prefix='/api/breweries')
 app.register_blueprint(image_routes, url_prefix='/api/images')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
+app.register_blueprint(useful_routes, url_prefix='/api/useful')
+app.register_blueprint(funny_routes, url_prefix='/api/funny')
+app.register_blueprint(cool_routes, url_prefix='/api/cool')
 db.init_app(app)
 Migrate(app, db)
 
