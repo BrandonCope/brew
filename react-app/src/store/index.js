@@ -5,6 +5,9 @@ import brewsReducer from './brews';
 import usersReducer from './users';
 import imagesReducer from './images';
 import reviewsReducer from './reviews';
+import usefulReducer from './useful';
+import funnyReducer from './funny';
+import coolReducer from './cool';
 
 
 const rootReducer = combineReducers({
@@ -13,6 +16,9 @@ const rootReducer = combineReducers({
   images: imagesReducer,
   reviews: reviewsReducer,
   users: usersReducer,
+  useful: usefulReducer,
+  funny: funnyReducer,
+  cool: coolReducer,
 });
 
 

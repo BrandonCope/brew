@@ -18,6 +18,9 @@ import Search from './components/SearchBar/Search';
 import ProfileMyBrews from './components/ProfileMyBrews';
 import ProfileMyReviews from './components/ProfileMyReviews';
 import ProfileMyImages from './components/ProfileMyImages';
+import { getUseful } from './store/useful';
+import { getFunny } from './store/funny';
+import { getCool } from './store/cool';
 
 
 function App() {
@@ -38,6 +41,9 @@ function App() {
       dispatch(getBrews())
       dispatch(getImages())
       dispatch(getReviews())
+      dispatch(getUseful())
+      dispatch(getFunny())
+      dispatch(getCool())
       setLoaded(true);
   }, [dispatch]);
 
