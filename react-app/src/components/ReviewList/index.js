@@ -4,6 +4,8 @@ import { useSelector } from "react-redux"
 import ReviewEditFormModal from "../ReviewEditForm"
 import { FaStar } from 'react-icons/fa'
 import DeleteFormModal from "../DeleteForm"
+import UsefulFunnyCool from "../UsefulFunnyCool"
+
 
 
 const ReviewList = ({brew}) => {
@@ -22,7 +24,9 @@ const ReviewList = ({brew}) => {
                                     {review.user_id === user?.id ? <div className="review-edit-delete">
                                         <ReviewEditFormModal brew={brew} review={review} />
                                         <DeleteFormModal review={review} />
-                                    </div> : <></>}
+                                    </div> : <>
+                                    <UsefulFunnyCool review={review} />
+                                    </>}
                                     </div>
                                     <div className="star-view-div">
                                         {[...Array(5)].map((star, i) => {

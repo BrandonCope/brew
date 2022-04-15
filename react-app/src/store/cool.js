@@ -34,7 +34,7 @@ export const createCool = (payload) => async dispatch => {
     return response;
 }
 
-export const deletecool = (id) => async dispatch => {
+export const deleteCool = (id) => async dispatch => {
     const response = await fetch(`/api/cool/${id}`, {
         method: 'DELETE'
     });

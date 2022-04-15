@@ -1,0 +1,20 @@
+.material-icons {
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* align-self: center */
+    font-size: inherit;
+
+}
+
+.buttonSelected {
+    background-color: #811c29;
+    background-color: #e74e11;
+    background-color: #ffc107;
+    background-color: #ffbf00;
+    cursor: pointer;
+    color: white;
+    padding: 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: 0;
+}
