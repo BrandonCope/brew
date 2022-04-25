@@ -38,9 +38,11 @@ Brew's redux state shape for react frontend
 **Features**
 
  - Create/ delete/ edit breweries
- - Add/ edit/ delete reviews of breweries
- - Add/ delete photos of breweries
+ - Add/ edit/ delete/ reviews of breweries
+ - Add/ delete/ photos of breweries
+ - Add/ delete/ a Useful, Funny, or Cool tag to a review
  - See lists of your reviews, photos, and breweries you are promoting on User Profile
+ - Add/ edit/ delete/ reviews, photos, and breweries from lists on User Profile
  - Can search for a brewery by name
 
 **Possible Features**
