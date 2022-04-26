@@ -34,6 +34,21 @@ Frontend Routes that the client can access while interacting with Brew app
 
 Brew's redux state shape for react frontend
 
+## Screenshots
+
+### Home:
+
+![image](https://user-images.githubusercontent.com/69406415/165193920-b69d7ab0-1b7f-4b98-a43b-611f5f400a0e.png)
+
+### Listings Page: 
+
+![image](https://user-images.githubusercontent.com/69406415/165193927-4c952e85-1293-4cfc-9389-e40bccd74035.png)
+
+### User's Reservations: 
+
+![image](https://user-images.githubusercontent.com/69406415/165193937-a8cdc0ba-0c91-4aa4-b1ff-baa391116724.png)
+
+
 
 **Features**
 
