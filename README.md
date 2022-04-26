@@ -44,7 +44,7 @@ Brew's redux state shape for react frontend
 
 ![image](https://user-images.githubusercontent.com/69406415/165193927-4c952e85-1293-4cfc-9389-e40bccd74035.png)
 
-### User's Reservations: 
+### Search Results Page: 
 
 ![image](https://user-images.githubusercontent.com/69406415/165193937-a8cdc0ba-0c91-4aa4-b1ff-baa391116724.png)
 
