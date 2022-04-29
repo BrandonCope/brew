@@ -1,0 +1,151 @@
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+    font-family: sans-serif;
+}
+#root {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  }
+
+.logo-home-container {
+    background-color: #c41200;
+    display: flex;
+    justify-content: center;
+    color: white;
+    /* padding: 50px; */
+    top: 0;
+}
+
+#about_link_text {
+    color: white;
+}
+
+.team-member-name {
+    color: white;
+}
+
+i {
+    color: white;
+}
+
+.error-container {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.error-div {
+    color: red;
+    word-break: normal;
+    margin-bottom: 5px;
+}
+
+.signup-form-container {
+    /* border: solid; */
+    /* width: 300px; */
+    /* height: 400px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+}
+
+.app-title {
+    color: #c41200;
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: black;
+    background-color: white;
+}
+
+
+.login-redirect-container {
+    display: flex;
+    align-items: center;
+}
+
+.portfolio-box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #c41200;
+    height: 200px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#links-container > div:hover {
+    color: black;
+}
+
+
+
+.login-form-container {
+    /* border: solid; */
+    /* width: 300px; */
+    /* height: 250px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* margin: auto; */
+}
+
+.login-form-container > h1 {
+    color: #c41200;
+}
+
+.login-form-container > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 200px;
+    width: 500px;
+    padding-bottom: 3px;
+}
+
+.login-form-container > form > div {
+    padding: 5px;
+}
+
+
+.login-image {
+    height: 400px;
+    width: 400px;
+    align-self: flex-start;
+    margin-left: 15px;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.login-input {
+    padding: 10px;
+    border-radius: 5px;
+    width: 175px;
+}

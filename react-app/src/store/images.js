@@ -36,9 +36,10 @@ export const createImage = (payload) => async dispatch => {
 }
 
 
-export const deleteImage = (id) => async dispatch => {
+export const deleteImage = (id, formData) => async dispatch => {
     const response = await fetch(`/api/images/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        body: formData
     });
     if(response.ok) {
         const message = await response.json();

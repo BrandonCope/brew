@@ -14,7 +14,7 @@ const DeleteForm = ({review, image, brew}) => {
     const {setShowModal} = useDeleteModal()
     const dispatch = useDispatch();
     const history = useHistory();
-    
+
     const useful = useSelector((state) => state.useful)
     const funny = useSelector((state) => state.funny)
     const cool = useSelector((state) => state.cool)
@@ -49,13 +49,18 @@ const DeleteForm = ({review, image, brew}) => {
             await dispatch(deleteReview(review.id))
         }
         if (image) {
-            dispatch(deleteImage(image.id))
+            const formData = new FormData();
+            formData.append('image', image.url)
+            dispatch(deleteImage(image.id, formData))
             dispatch(getBrews())
         }
         if (brew) {
 
             brew.images.forEach(image => {
-                dispatch(deleteImage(image.id))
+                const formData = new FormData();
+                formData.append('image', image.url)
+                dispatch(deleteImage(image.id, formData))
+                // dispatch(deleteImage(image.id))
             })
 
             await dispatch(deleteBrewery(brew.id))

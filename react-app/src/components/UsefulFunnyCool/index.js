@@ -24,13 +24,13 @@ const UsefulFunnyCool = ({review}) => {
 
     const userHasUseful = usefulArr.filter((useful) => useful?.user_id === user_id)
     const userUsefulReview = userHasUseful.filter((useful) => useful?.review_id === review.id)
-    console.log(userUsefulReview[0]?.id)
+
     const userHasFunny = funnyArr.filter((funny) => funny?.user_id === user_id)
     const userFunnyReview = userHasFunny.filter((funny) => funny?.review_id === review.id)
-    console.log(userFunnyReview[0]?.id)
+
     const userHasCool = coolArr.filter((cool) => cool?.user_id === user_id)
     const userCoolReview = userHasCool.filter((cool) => cool?.review_id === review.id)
-    console.log(userCoolReview[0]?.id)
+
 
     let handleUseful;
     let handleFunny;
