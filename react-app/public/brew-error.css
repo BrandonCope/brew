@@ -7,6 +7,10 @@ html,body {
     position: relative;
     font-family: sans-serif;
 }
+h1 {
+    align-self: center;
+    width: 600px;
+}
 #root {
     display: flex;
     flex-flow: column;
