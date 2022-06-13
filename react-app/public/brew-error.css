@@ -91,6 +91,16 @@ a:hover {
     border-radius: 15px;
 }
 
+.team-member-portfolio:hover {
+    background-color: white;
+    color: #c41200;
+}
+
+.team-member-github:hover {
+    background-color: white;
+    color: #c41200;
+}
+
 #links-container > div:hover {
     color: black;
 }

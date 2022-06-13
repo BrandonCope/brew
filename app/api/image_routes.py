@@ -4,7 +4,7 @@ from flask_login import login_required
 from app.models import db, Image
 from app.forms import ImageForm
 from app.aws_config import (
-    upload_file_to_s3, allowed_file, get_unique_filename, delete_file_from_s3)
+    upload_file_to_s3, allowed_file, get_unique_filename, delete_image_from_s3)
 
 image_routes = Blueprint('images', __name__)
 
@@ -97,14 +97,14 @@ def post_images():
 @image_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_images(id):
-        delete_image = Image.query.get(id)
+        image = Image.query.get(id)
         name = request.form['image'].split('/')[-1]
-        print("hello", delete_file_from_s3)
-        print("there", name)
+        # print("hello", delete_image_from_s3)
+        # print("there", name)
 
-        if 'amazonaws' in request.form['image']:
-            delete_file_from_s3(name)
+        if 'amazonaws' in image.image:
+            delete_image_from_s3(str(image.image).split('/')[-1])
 
-        db.session.delete(delete_image)
+        db.session.delete(image)
         db.session.commit()
         return {'message': "Success"}
